@@ -1,0 +1,197 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "d65c6d96d0a2c348968ffc335ec9c2b6",
+    "packages": [
+        {
+            "name": "mediawiki/at-ease",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikimedia/at-ease.git",
+                "reference": "94c0b84888841d160419f915c2745d9d08fbf0c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikimedia/at-ease/zipball/94c0b84888841d160419f915c2745d9d08fbf0c3",
+                "reference": "94c0b84888841d160419f915c2745d9d08fbf0c3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "0.9",
+                "mediawiki/mediawiki-codesniffer": "0.3.0",
+                "phpunit/phpunit": "~4.5",
+                "squizlabs/php_codesniffer": "2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Starling",
+                    "email": "tstarling@wikimedia.org"
+                },
+                {
+                    "name": "MediaWiki developers",
+                    "email": "wikitech-l@lists.wikimedia.org"
+                }
+            ],
+            "description": "Safe replacement to @ for suppressing warnings.",
+            "homepage": "https://www.mediawiki.org/wiki/at-ease",
+            "time": "2015-09-18 07:02:06"
+        },
+        {
+            "name": "oojs/oojs-ui",
+            "version": "v0.12.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikimedia/oojs-ui.git",
+                "reference": "221a66e8df215e767ff4b55b637138a73fcffdb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikimedia/oojs-ui/zipball/221a66e8df215e767ff4b55b637138a73fcffdb2",
+                "reference": "221a66e8df215e767ff4b55b637138a73fcffdb2",
+                "shasum": ""
+            },
+            "require": {
+                "mediawiki/at-ease": "1.1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "0.9",
+                "mediawiki/mediawiki-codesniffer": "0.4.0",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "php/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bartosz Dziewoński",
+                    "email": "matma.rex@gmail.com"
+                },
+                {
+                    "name": "Ed Sanders",
+                    "email": "esanders@wikimedia.org"
+                },
+                {
+                    "name": "James D. Forrester",
+                    "email": "jforrester@wikimedia.org"
+                },
+                {
+                    "name": "Kirsten Menger-Anderson",
+                    "email": "kmenger@wikimedia.org"
+                },
+                {
+                    "name": "Rob Moen",
+                    "email": "rmoen@wikimedia.org"
+                },
+                {
+                    "name": "Roan Kattouw",
+                    "email": "roan@wikimedia.org"
+                },
+                {
+                    "name": "Timo Tijhof",
+                    "email": "timo@wikimedia.org"
+                },
+                {
+                    "name": "Trevor Parscal",
+                    "email": "trevor@wikimedia.org"
+                }
+            ],
+            "description": "Provides library of common widgets, layouts, and windows.",
+            "homepage": "https://www.mediawiki.org/wiki/OOjs_UI",
+            "time": "2015-10-13 20:29:29"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.22.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ebfc36b7e77b0c1175afe30459cf943010245540",
+                "reference": "ebfc36b7e77b0c1175afe30459cf943010245540",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "require-dev": {
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.22-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2015-10-13 07:07:02"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

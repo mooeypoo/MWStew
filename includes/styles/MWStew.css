@@ -1,0 +1,19 @@
+body {
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+.mwstew-ui-title {
+	font-size: 1.5em;
+	margin-bottom: 1em;
+}
+
+.mwstew-ui-form {
+	width: 600px;
+}
+
+.mwstew-ui-form .oo-ui-fieldsetLayout {
+	border-radius: 1em;
+	border: 1px solid #666666;
+	padding: 1em;
+}
