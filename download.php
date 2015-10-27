@@ -17,6 +17,14 @@ $builder->addFile( $builder->getExtName() . ".php", $templating->render( 'extens
 	"license" => $sanitizer->getParam( 'ext_license' ),
 	"url" => $sanitizer->getParam( 'ext_url' ),
 ) ) );
+$builder->addFile( "extension.json", $templating->render( 'extension.json', array(
+	"lowername" => $builder->getLowercaseExtName(),
+	"version" => strval( $sanitizer->getParam( 'ext_version' ) || "0.0.0" ),
+	"name" => $builder->getExtName(),
+	"author" => $sanitizer->getParam( 'ext_author' ),
+	"license" => $sanitizer->getParam( 'ext_license' ),
+	"url" => $sanitizer->getParam( 'ext_url' ),
+) ) );
 
 // JS Development files
 if ( $sanitizer->getParam( 'ext_dev_js' ) !== null ) {
@@ -26,11 +34,18 @@ if ( $sanitizer->getParam( 'ext_dev_js' ) !== null ) {
 	$builder->addFile( 'Gruntfile.js', $templating->render( 'Gruntfile.js' ) );
 	$builder->addFile( 'package.json', $templating->render( 'package.json', array(
 		"name" => $builder->getExtName(),
-		"version" => $sanitizer->getParam( 'ext_version' ) || '0.0.0',
+		"version" => $sanitizer->getParam( 'ext_version' ) || "0.0.0",
 	) ) );
 	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.js', $templating->render( 'modules/ext.extension.js', array(
 		"lowername" => $builder->getLowercaseExtName(),
 	) ) );
+	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.css', $templating->render( 'modules/ext.extension.css', array(
+		"lowername" => $builder->getLowercaseExtName(),
+	) ) );
+}
+// PHP Development files
+if ( $sanitizer->getParam( 'ext_dev_php' ) !== null ) {
+	$builder->addFile( 'composer.json', $templating->render( 'composer.json' ) );
 }
 
 // Language file

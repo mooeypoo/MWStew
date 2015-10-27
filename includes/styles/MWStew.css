@@ -1,7 +1,7 @@
 body {
 	font-size: 14px;
 	font-family: sans-serif;
-	background: #E6E6E6;
+	background: #DDE6ED;
 }
 
 .wrapper {
@@ -12,9 +12,11 @@ body {
 
 .mwstew-ui-title {
 	margin: 1em 0 1em 0;
+	color: #1E3F57;
 }
 .mwstew-ui-title-main {
 	font-size: 1.8em;
+	font-weight: bold;
 	display: block;
 }
 .mwstew-ui-title-subtitle {
@@ -30,4 +32,12 @@ body {
 	background: #F5F5F5;
 	border: 1px solid #B3B3B3;
 	padding: 1em;
+}
+
+.mwstew-ui-form .oo-ui-fieldsetLayout > .oo-ui-labelElement-label {
+	font-size: 1.3em;
+}
+
+.mwstew-ui-form-fieldsets-submit {
+	text-align: center;
 }

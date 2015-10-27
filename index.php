@@ -11,6 +11,7 @@ $styles = array(
 ?>
 <html>
 	<head>
+	<title>MWStew: MediaWiki Extension Boilerplate Maker</title>
 <?php
 	// Stylesheets
 	for ( $i = 0; $i < count( $styles ); $i++ ) {
@@ -39,15 +40,22 @@ $styles = array(
 	) );
 
 	// Submit button
-	$submit = new OOUI\ButtonInputWidget( array(
-		"label" => "Create boilerplate",
-		"type" => "submit"
+	$submitFieldsetLayout = new OOUI\FieldsetLayout( array(
+		"classes" => array( 'mwstew-ui-form-fieldsets-submit' ),
+		"items" => array(
+			new OOUI\ButtonInputWidget( array(
+				"label" => "Create boilerplate",
+				"classes" => array( 'mwstew-ui-form-fieldsets-submit-button' ),
+				"type" => "submit",
+				"flags" => array( 'constructive' ),
+			) )
+		),
 	) );
 
 	// Extension details
 	$extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
-		"label" => "Extension details",
-		"classes" => array( 'mwstew-ui-form-fields-extName' ),
+		"label" => "General details",
+		"classes" => array( 'mwstew-ui-form-fieldsets-general' ),
 		"items" => array(
 			// Name
 			new OOUI\FieldLayout(
@@ -58,7 +66,8 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension name",
-					"help" => "Your extension name. Cannot have spaces."
+					// "help" => "Your extension name. Cannot have spaces.",
+					"align" => "left",
 				)
 			),
 			// Author
@@ -70,7 +79,8 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension author",
-					"help" => "Tell us who the author is. This will be public; you can use your real name or the username people know you by.",
+					// "help" => "Tell us who the author is. This will be public; you can use your real name or the username people know you by.",
+					"align" => "left",
 				)
 			),
 			// Version
@@ -81,7 +91,8 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension version",
-					"help" => "The version of this extension. Defaults to 0.0.0"
+					// "help" => "The version of this extension. Defaults to 0.0.0"
+					"align" => "left",
 				)
 			),
 			// Description
@@ -94,7 +105,8 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension description",
-					"help" => "Describe what your extension does."
+					// "help" => "Describe what your extension does."
+					"align" => "left",
 				)
 			),
 			// URL
@@ -105,7 +117,8 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension URL",
-					"help" => "A URL for the extension details.",
+					// "help" => "A URL for the extension details.",
+					"align" => "left",
 				)
 			),
 			// License
@@ -121,22 +134,22 @@ $styles = array(
 				) ),
 				array(
 					"label" => "Extension license",
-					"help" => "Choose an extension license. MIT License is prefered; all extensions should be open source license.",
+					// "help" => "Choose an extension license. MIT License is prefered; all extensions should be open source license.",
+					"align" => "left",
 				)
 			),
 		),
 	) );
 	// Extension development details
 	$extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
-		"label" => "Extension details",
-		"classes" => array( 'mwstew-ui-form-fields-extName' ),
+		"label" => "Development environment",
+		"classes" => array( 'mwstew-ui-form-fieldset-development' ),
 		"items" => array(
 			// PHP Development
 			new OOUI\FieldLayout(
 				new OOUI\CheckboxInputWidget( array(
 					"name" => "ext_dev_php",
 					"value" => 1,
-					"selected" => true,
 				) ),
 				array(
 					"label" => "PHP development tools",
@@ -162,7 +175,7 @@ $styles = array(
 	// Build the form
 	$form->addItems( array( $extDetailsFieldsetLayout, $extDevelopmentFieldsetLayout ) );
 
-	$form->addItems( array( $submit ) );
+	$form->addItems( array( $submitFieldsetLayout ) );
 ?>
 	<div class="mwstew-ui-title">
 <?php

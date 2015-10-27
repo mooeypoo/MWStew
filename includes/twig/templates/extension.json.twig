@@ -1,0 +1,33 @@
+{
+	"name": "{{ name }}",
+	"version": "{{ version }}",
+	"author": [
+		"{{ author }}"
+	],
+	"url": "{{ url }}",
+	"descriptionmsg": "{{ lowername }}-desc",
+	"license-name": "{{ license }}",
+	"type": "other",
+	"MessagesDirs": {
+		"{{ name }}": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.{{ lowername }}": {
+			"scripts": [
+				"modules/ext.{{ lowername }}.js"
+			],
+			"styles": [
+				"modules/ext.{{ lowername }}.css"
+			],
+			"messages": [],
+			"dependencies": []
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "{{ name }}"
+	},
+	"manifest_version": 1
+}
