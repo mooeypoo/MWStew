@@ -19,11 +19,16 @@ $styles = array(
 ?>
 	</head>
 <body>
+	<div class="wrapper">
 <?php
 	// Title
 	$title = new OOUI\LabelWidget( array(
-		"label" => "MWStew: MediaWiki Extension Boilerplate Maker",
-		"classes" => array( "mwstew-ui-title" )
+		"label" => "MWStew",
+		"classes" => array( "mwstew-ui-title-main" )
+	) );
+	$subtitle = new OOUI\LabelWidget( array(
+		"label" => "MediaWiki Extension Boilerplate Maker",
+		"classes" => array( "mwstew-ui-title-subtitle" )
 	) );
 
 	// Form
@@ -135,6 +140,7 @@ $styles = array(
 				) ),
 				array(
 					"label" => "PHP development tools",
+					"align" => "inline",
 					"help" => "Select if your extension has PHP pieces, to add PHP development tools.",
 				)
 			),
@@ -146,6 +152,7 @@ $styles = array(
 				) ),
 				array(
 					"label" => "JavaScript development tools",
+					"align" => "inline",
 					"help" => "Select if your extension has JavaScript modules, to add JavaScript development tools.",
 				)
 			)
@@ -156,8 +163,16 @@ $styles = array(
 	$form->addItems( array( $extDetailsFieldsetLayout, $extDevelopmentFieldsetLayout ) );
 
 	$form->addItems( array( $submit ) );
+?>
+	<div class="mwstew-ui-title">
+<?php
 	echo $title;
+	echo $subtitle;
+?>
+	</div>
+<?php
 	echo $form;
 ?>
+	</div>
 </body>
 </html>
