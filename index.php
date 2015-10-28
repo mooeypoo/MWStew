@@ -140,6 +140,7 @@ $styles = array(
 			),
 		),
 	) );
+
 	// Extension development details
 	$extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 		"label" => "Development environment",
@@ -172,8 +173,78 @@ $styles = array(
 		)
 	) );
 
+
+
+	// Special page
+	$extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
+		"label" => "Special page",
+		"classes" => array( 'mwstew-ui-form-fieldsets-specialpage' ),
+		"items" => array(
+			// Name
+			new OOUI\FieldLayout(
+				new OOUI\TextInputWidget( array(
+					"placeholder" => "Special:MyExtension",
+					"name" => "ext_specialpage_name",
+				) ),
+				array(
+					"label" => "Special page name",
+					"align" => "left",
+				)
+			),
+			// Title
+			new OOUI\FieldLayout(
+				new OOUI\TextInputWidget( array(
+					"placeholder" => "Welcome to MyExtension",
+					"name" => "ext_specialpage_title",
+				) ),
+				array(
+					"label" => "Special page title",
+					"align" => "left",
+				)
+			),
+			// Text
+			new OOUI\FieldLayout(
+				new OOUI\TextInputWidget( array(
+					"placeholder" => "An introduction to Special:MyExtension page.",
+					"name" => "ext_specialpage_intro",
+					"multiline" => true,
+					"rows" => 3
+				) ),
+				array(
+					"label" => "Special page introduction",
+					"align" => "left",
+				)
+			),
+		)
+	) );
+
+	// Extension hooks
+	// $extHooksFieldsetLayout = new OOUI\FieldsetLayout( array(
+	// 	"label" => "Extension hooks",
+	// 	"classes" => array( 'mwstew-ui-form-fieldset-hooks' ),
+	// 	"items" => array(
+	// 		// PHP Development
+	// 		new OOUI\FieldLayout(
+	// 			new OOUI\CheckboxInputWidget( array(
+	// 				"name" => "ext_dev_php",
+	// 				"value" => 1,
+	// 			) ),
+	// 			array(
+	// 				"label" => "PHP development tools",
+	// 				"align" => "inline",
+	// 				"help" => "Select the hooks that your extension requires.",
+	// 			)
+	// 		),
+	// 	),
+	// ) );
+
 	// Build the form
-	$form->addItems( array( $extDetailsFieldsetLayout, $extDevelopmentFieldsetLayout ) );
+	$form->addItems( array(
+		$extDetailsFieldsetLayout,
+		$extDevelopmentFieldsetLayout,
+		$extSpecialPageFieldsetLayout,
+		// $extHooksFieldsetLayout,
+	) );
 
 	$form->addItems( array( $submitFieldsetLayout ) );
 ?>
