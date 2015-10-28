@@ -1,5 +1,4 @@
-# MWStew
-## MediaWiki Extension Boilerplate Maker
+# MWStew: MediaWiki Extension Boilerplate Maker.
 
 A web interface to create boilerplate extension for MediaWiki development.
 
