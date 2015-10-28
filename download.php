@@ -18,6 +18,21 @@ $params = array(
 	"url" => $sanitizer->getParam( 'ext_url' ),
 );
 
+if ( isset( $sanitizer->getParam( 'ext_specialpage_name' ) ) ) {
+	$params[ 'specialpage' ] = array(
+		// Special page
+		"special_name" => $sanitizer->getParam( 'ext_specialpage_name' ),
+		"lowername" => lcfirst( $sanitizer->getParam( 'ext_specialpage_name' ) ),
+		"special_name_nonamespace" => substr(
+			$sanitizer->getParam( 'ext_specialpage_name' ),
+			strpos( ':', $sanitizer->getParam( 'ext_specialpage_name' ) )
+		),
+		"special_name_class" => str_replace( ":", "", $sanitizer->getParam( 'ext_specialpage_name' ) ),
+		"special_title" => $sanitizer->getParam( 'ext_specialpage_title' ),
+		"special_intro" => $sanitizer->getParam( 'ext_specialpage_intro' ),
+	);
+}
+
 /* Build the extension zip file */
 
 // Extension file
@@ -43,6 +58,12 @@ if ( $sanitizer->getParam( 'ext_dev_php' ) !== null ) {
 // Language file
 $builder->addFile( 'i18n/en.json', $templating->render( 'i18n/en.json', $params ) );
 $builder->addFile( 'i18n/qqq.json', $templating->render( 'i18n/qqq.json', $params ) );
+
+// Special page
+$builder->addFile(
+	'specials/' . str_replace( ":", "", $params[ 'specialpage' ][ 'special_name' ] ) . '.php',
+	$templating->render( 'specials/SpecialPage.php', $params['specialpage'] )
+);
 
 // Send to download
 $zip = new MWStew\Zipper( BASE_PATH . '/temp/', $builder->getNormalizedName() );
