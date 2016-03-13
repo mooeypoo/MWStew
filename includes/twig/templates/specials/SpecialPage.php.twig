@@ -1,0 +1,26 @@
+<?php
+/**
+ * {{ specialpage.special_name_nonamespace }} SpecialPage for {{ name }} extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
+class {{ special_name_class }} extends SpecialPage {
+	public function __construct() {
+		parent::__construct( '{{ specialpage.special_name_nonamespace }}' );
+	}
+	/**
+	 * Show the page to the user
+	 *
+	 * @param string $sub The subpage string argument (if any).
+	 */
+	public function execute( $sub ) {
+		$out = $this->getOutput();
+		$out->setPageTitle( $this->msg( '{{ lowername }}-{{ specialpage.lowername }}' ) );
+		$out->addHelpLink( 'How to become a MediaWiki hacker' );
+		$out->addWikiMsg( '{{ lowername }}-{{ specialpage.lowername }}-intro' );
+	}
+	protected function getGroupName() {
+		return 'other';
+	}
+}

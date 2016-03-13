@@ -39,5 +39,10 @@
 		"localBasePath": "",
 		"remoteExtPath": "{{ name }}"
 	},
+{% if ext_specialpage_name is not defined %}
+	"SpecialPages": {
+		"{{ ext_specialpage_name_nonamespace }}": "{{ ext_specialpage_name }}"
+	},
+
 	"manifest_version": 1
 }
