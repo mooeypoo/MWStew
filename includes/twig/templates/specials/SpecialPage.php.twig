@@ -9,6 +9,7 @@ class {{ specialpage.className }} extends SpecialPage {
 	public function __construct() {
 		parent::__construct( '{{ specialpage.name.noNamespace }}' );
 	}
+
 	/**
 	 * Show the page to the user
 	 *
@@ -16,10 +17,11 @@ class {{ specialpage.className }} extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( '{{ special.name.lowerFull }}-title' ) );
+		$out->setPageTitle( $this->msg( '{{ specialpage.name.i18nKey }}-title' ) );
 		$out->addHelpLink( 'How to become a MediaWiki hacker' );
-		$out->addWikiMsg( '{{ special.name.lowerFull }}-intro' );
+		$out->addWikiMsg( '{{ specialpage.name.i18nKey }}-intro' );
 	}
+
 	protected function getGroupName() {
 		return 'other';
 	}

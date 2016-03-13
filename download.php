@@ -8,15 +8,10 @@ $templating = new MWStew\Templating();
 $builder = new MWStew\Builder( $sanitizer, $sanitizer->getParam( 'ext_name' ) );
 
 /* Get sanitized parameters */
-$fullName = $builder->getExtName();
-if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== null ) {
-	$specialPageFullName = $sanitizer->getParam( 'ext_specialpage_name' );
-}
-
 $params = array(
 	"lowername" => $builder->getLowercaseExtName(),
 	"name" => $builder->getExtName(),
-	"fullName" => $sanitizer, $sanitizer->getParam( 'ext_full_name' ),
+	"fullName" => $sanitizer->getParam( 'ext_full_name' ),
 	"author" => $sanitizer->getParam( 'ext_author' ),
 	"version" => strval( $sanitizer->getParam( 'ext_version' ) || "0.0.0" ),
 	"license" => $sanitizer->getParam( 'ext_license' ),
@@ -40,35 +35,43 @@ if ( $sanitizer->getParam( 'ext_dev_js' ) !== null ) {
 	$builder->addFile( 'package.json', $templating->render( 'package.json', $params ) );
 	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
 	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
+
+	// Add unit test file
+	$builder->addFile( 'tests/' . $builder->getNormalizedName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
 }
 
 // PHP Development files
 if ( $sanitizer->getParam( 'ext_dev_php' ) !== null ) {
 	$builder->addFile( 'composer.json', $templating->render( 'composer.json' ) );
+
+	// Add unit test file
+	$builder->addFile( 'tests/ ' . $builder->getNormalizedName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
 }
 
 // Special page
 // TODO: Allow for more than one special page
-if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== null ) {
-	$specialPageFullName = $fullName;
+if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
+	$specialPageFullName = $sanitizer->getParam( 'ext_specialpage_name' );
 	$specialPageShortName = str_replace( 'Special:', '', $specialPageFullName );
-	$specialPageClassName = str_replace( 'Special', '', $specialPageFullName );
+	$specialPageClassName = str_replace( ':', '', $specialPageFullName );
 
 	$params += array(
 		'specialpage' => array(
 			'name' => array(
 				'full' => $specialPageFullName,
-				'lowerFull' => lcfirst( $specialPageShortName ),
 				'noNamespace' => $specialPageShortName,
+				'lowerNoNamespace' => lcfirst( $specialPageShortName ),
+				'i18nKey' => 'special-' . lcfirst( $specialPageShortName ),
 			),
 			'className' => $specialPageClassName,
 			'title' => $sanitizer->getParam( 'ext_specialpage_title' ),
 			'intro' => $sanitizer->getParam( 'ext_specialpage_intro' ),
 		),
 	);
+
 	// Special page
 	$builder->addFile(
-		'specials/' . str_replace( ":", "", $params[ 'specialpage' ][ 'special_name' ] ) . '.php',
+		'specials/' . $specialPageClassName . '.php',
 		$templating->render( 'specials/SpecialPage.php', $params )
 	);
 	$builder->addFile( $builder->getNormalizedName() . ".alias.php", $templating->render( 'extension.alias.php', $params ) );

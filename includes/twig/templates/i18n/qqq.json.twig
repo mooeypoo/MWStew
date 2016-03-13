@@ -1,7 +1,8 @@
 {
 {% if specialpage %}
-	"{{ lowername }}": "The name of the extension's entry in Special:SpecialPages",
-	"{{ lowername }}-summary": "Description appearing on top of <tvar|1>{{ '{{' }}ll|{{ specialpage.fullName }}{{ '}}' }}</>.",
+	"{{ specialpage.name.i18nKey }}-intro": "Description appearing on top of <tvar|1>{{ '{{' }}ll|{{ specialpage.name.fullName }}{{ '}}' }}</>.",
+	"{{ specialpage.name.i18nKey }}-title": "Title of the special page {{ specialpage.name.fullName }}",
 {% endif %}
+	"{{ lowername }}": "The name of the extension.",
 	"{{ lowername }}-desc": "{{ '{{' }}desc|name={{ name }}|url={{ url }}{{ '}}' }}"
 }
