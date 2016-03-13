@@ -29,10 +29,10 @@
 {% endif %}
 {% if parts.specialpage %}
 	"SpecialPages": {
-		"{{ specialpage.shortName }}": "{{ specialname.className }}"
+		"{{ specialpage.name.noNamespace }}": "{{ specialname.className }}"
 	},
 	"ExtensionMessagesFiles": {
-		"{{ }}Alias": "{{ name }}.alias.php"
+		"{{ name }}Alias": "{{ name }}.alias.php"
 	},
 {% endif %}
 	"ResourceFileModulePaths": {
