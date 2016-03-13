@@ -65,8 +65,20 @@ $styles = array(
 					"name" => "ext_name",
 				) ),
 				array(
-					"label" => "Extension name",
+					"label" => "Extension name (no spaces)",
 					// "help" => "Your extension name. Cannot have spaces.",
+					"align" => "left",
+				)
+			),
+			// Name
+			new OOUI\FieldLayout(
+				new OOUI\TextInputWidget( array(
+					"placeholder" => "My Mediawiki Extension",
+					"name" => "ext_full_name",
+				) ),
+				array(
+					"label" => "Extension full name. (If not given, the extension name will be used)",
+					// "help" => "Your extension human-readable name.",
 					"align" => "left",
 				)
 			),

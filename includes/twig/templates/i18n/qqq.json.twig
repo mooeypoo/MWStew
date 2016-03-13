@@ -1,3 +1,7 @@
 {
+{% if specialpage %}
+	"{{ lowername }}": "The name of the extension's entry in Special:SpecialPages",
+	"{{ lowername }}-summary": "Description appearing on top of <tvar|1>{{ '{{' }}ll|{{ specialpage.fullName }}{{ '}}' }}</>.",
+{% endif %}
 	"{{ lowername }}-desc": "{{ '{{' }}desc|name={{ name }}|url={{ url }}{{ '}}' }}"
 }

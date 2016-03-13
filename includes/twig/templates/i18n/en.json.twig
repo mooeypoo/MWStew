@@ -1,3 +1,7 @@
 {
+{% if specialpage %}
+	"{{ lowername }}-summary": "{{ specialpage.intro }}",
+{% endif %}
+	"{{ lowername }}": "{{ fullName }}",
 	"{{ lowername }}-desc": "{{ desc }}"
 }

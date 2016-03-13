@@ -30,7 +30,6 @@ class Zipper {
 	 */
 	public function addFilesToZip( $fileStructure ) {
 		foreach ( $fileStructure as $dir => $content ) {
-
 			$this->zip->addFromString( $dir, $content );
 		}
 		$this->zip->close();
