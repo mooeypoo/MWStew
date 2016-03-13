@@ -7,6 +7,8 @@ $sanitizer = new MWStew\Sanitizer( $_POST );
 $templating = new MWStew\Templating();
 $builder = new MWStew\Builder( $sanitizer, $sanitizer->getParam( 'ext_name' ) );
 
+$useHooksFile = false;
+
 /* Get sanitized parameters */
 $params = array(
 	"lowername" => $builder->getLowercaseExtName(),
@@ -38,6 +40,8 @@ if ( $sanitizer->getParam( 'ext_dev_js' ) !== null ) {
 
 	// Add unit test file
 	$builder->addFile( 'tests/' . $builder->getNormalizedName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
+
+	$useHooksFile = true;
 }
 
 // PHP Development files
@@ -76,6 +80,18 @@ if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 	);
 	$builder->addFile( $builder->getNormalizedName() . ".alias.php", $templating->render( 'extension.alias.php', $params ) );
 }
+
+// Hooks
+if ( $sanitizer->getParam( 'ext_specialpage_hooks' ) !== '' ) {
+	$useHooksFile = true;
+}
+
+// Add the hooks file if we need to
+// TODO: Make this actually conditional. This condition is commented out for now
+// see comment in extension.json.twig for the explanation of why this file is
+// added in to all boilerplates for the moment
+// Add: if ( $useHooksFile ) { }
+$builder->addFile( "Hooks.php", $templating->render( 'Hooks.php', $params ) );
 
 // Extension file
 $builder->addFile( $builder->getExtName() . ".php", $templating->render( 'extension.php', $params ) );

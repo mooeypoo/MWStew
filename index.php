@@ -185,8 +185,6 @@ $styles = array(
 		)
 	) );
 
-
-
 	// Special page
 	$extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 		"label" => "Special page",
