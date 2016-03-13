@@ -9,7 +9,7 @@
 	"descriptionmsg": "{{ lowername }}-desc",
 	"license-name": "{{ license }}",
 	"type": "other",
-	"manifest_version": 1
+	"manifest_version": 1,
 	"MessagesDirs": {
 		"{{ name }}": [
 			"i18n"
@@ -46,7 +46,7 @@
 	},
 	"AutoloadClasses": {
 {% if parts.specialpage %}
-		"{{ specialname.className }}": "specials/SpecialPage.php"
+		"{{ parts.specialpage.name.className }}": "specials/SpecialPage.php",
 {% endif %}
 {# TODO:
 		Make hooks conditional on whether we have javascript or hooks.
@@ -59,7 +59,4 @@
 #}
 		"{{ name }}Hooks": "Hooks.php"
 	}
-}
-}
-}
 }
