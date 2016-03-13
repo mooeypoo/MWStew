@@ -5,6 +5,7 @@
 		"{{ author }}"
 	],
 	"url": "{{ url }}",
+	"namemsg": "{{ lowername }}",
 	"descriptionmsg": "{{ lowername }}-desc",
 	"license-name": "{{ license }}",
 	"type": "other",
@@ -26,13 +27,8 @@
 			"messages": [],
 			"dependencies": []
 		},
-		"ext.{{ lowername }}.tests": {
-			"scripts": [
-				"tests/ext.{{ lowername }}.test.js"
-			],
-			"dependencies": [
-				"ext.{{ lowername }}"
-			]
+		"ResourceLoaderTestModules": {
+			"{{ name }}Hooks::onResourceLoaderTestModules"
 		},
 	},
 {% endif %}
@@ -48,4 +44,22 @@
 		"localBasePath": "",
 		"remoteExtPath": "{{ name }}"
 	},
+	"AutoloadClasses": {
+{% if parts.specialpage %}
+		"{{ specialname.className }}": "specials/SpecialPage.php"
+{% endif %}
+{# TODO:
+		Make hooks conditional on whether we have javascript or hooks.
+		for the moment, this is a bit of a problem because the end of the 'AutoloadClasses'
+		object cannot have an extra comma, so if all files are conditional, we may end
+		up with an extra comma and have the extension.json file not load properly.
+		Since 'Hooks.php' is generally useful, I am adding it in here unconditionally
+		and in the download.php as well. If it's unused, the class will be empty, serving
+		as a placeholder for the extension files. Not perfect, but good enough for now.
+#}
+		"{{ name }}Hooks": "Hooks.php"
+	}
+}
+}
+}
 }
