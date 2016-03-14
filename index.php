@@ -233,23 +233,29 @@ $styles = array(
 	) );
 
 	// Extension hooks
+$hookFields = array();
+$hooks = array(
+	'AlternateEdit' => "This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.",
+	'AlternateEditPreview' => "This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.",
+);
+for ( $hooks as $hook => $desc ) {
+	$hookFields = new OOUI\FieldLayout(
+		new OOUI\CheckboxInputWidget( array(
+			"name" => "ext_hooks[]",
+			"value" => $hook,
+		) ),
+		array(
+			"label" => $hook,
+			"align" => "inline",
+			"help" => $desc,
+		)
+	);
+}
+
 	$extHooksFieldsetLayout = new OOUI\FieldsetLayout( array(
 		"label" => "Extension hooks",
 		"classes" => array( 'mwstew-ui-form-fieldset-hooks' ),
-		"items" => array(
-			// PHP Development
-			new OOUI\FieldLayout(
-				new OOUI\CheckboxInputWidget( array(
-					"name" => "ext_hooks[]",
-					"value" => "AlternateEdit",
-				) ),
-				array(
-					"label" => "AlternateEdit",
-					"align" => "inline",
-					"help" => "This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.",
-				)
-			),
-		),
+		"items" => $hookFields,
 	) );
 
 	// Build the form
