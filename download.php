@@ -82,8 +82,25 @@ if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 }
 
 // Hooks
-if ( $sanitizer->getParam( 'ext_specialpage_hooks' ) !== '' ) {
+$hookArray = $sanitizer->getParam( 'ext_hooks' );
+if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 	$useHooksFile = true;
+	$hooksObject = array();
+	$hooksClassName = $builder->getExtName() . "Hooks";
+
+	// Build the array for extension.json
+	// and for Hooks.php.twig
+	foreach ( $hookArray as $hook ) {
+		$hooksObject[ $hook ] = $hooksClassName . "::on" . $hook;
+	}
+
+	$params += array(
+		// This is for extension.json file, to write out the "Hooks": {}
+		// object directly
+		"hooksObject" =>json_encode( $hooksObject, JSON_PRETTY_PRINT ),
+		// This is for the Hooks.php file, to include the hook subtemplates
+		"hooks" => $hookArray,
+	);
 }
 
 // Add the hooks file if we need to

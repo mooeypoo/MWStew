@@ -44,7 +44,14 @@
 		"localBasePath": "",
 		"remoteExtPath": "{{ name }}"
 	},
+{% if hooksObject %}
+	{#  The backend needs to write this object so that
+		we get a valid json without trailing commas #}
+	"Hooks": {{ hooksObject }},
+{% endif %}
 	"AutoloadClasses": {
+	}
+}
 {% if parts.specialpage %}
 		"{{ parts.specialpage.name.className }}": "specials/SpecialPage.php",
 {% endif %}

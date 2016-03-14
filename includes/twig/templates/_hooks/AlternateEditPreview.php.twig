@@ -1,0 +1,25 @@
+	/**
+	 * This hook is called at the beginning of getPreviewText()
+	 * when the page is being previewed during &action=edit.
+	 * This can be used to replace the normal edit preview by
+	 * setting the HTML to be output as the preview into
+	 * &$previewHTML and the ParserOutput object into
+	 * &$parserOutput, and then returning false.
+	 *
+	 * Note that $editor->previewTextAfterContent is not automatically
+	 * appended to &$previewHTML; the hook function must do this
+	 * itself if this is should be included.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/AlternateEditPreview\
+	 *
+	 * @param EditPage $editpage EditPage instance
+	 * @param $content Content object for the text field from the edit page
+	 * @param string $previewHTML Text to be placed into the page for the preview
+	 * @param ParserOutput $parserOutput The ParserOutput object for the preview
+	 *
+	 * @return {boolean} Return true to continue with the normal page preview,
+	 * or false to use the values set in &$previewHTML and &$parserOutput.
+	 */
+	public static function onAlternateEditPreview( $editor, &$content, &$previewHTML, &$parserOutput ) {
+		/* Your code here */
+	}
