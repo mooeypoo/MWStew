@@ -47,13 +47,11 @@
 {% if hooksObject %}
 	{#  The backend needs to write this object so that
 		we get a valid json without trailing commas #}
-	"Hooks": {{ hooksObject }},
+	"Hooks": {{ hooksObject|raw }},
 {% endif %}
 	"AutoloadClasses": {
-	}
-}
 {% if parts.specialpage %}
-		"{{ parts.specialpage.name.className }}": "specials/SpecialPage.php",
+		"{{ specialpage.name.className }}": "specials/SpecialPage.php",
 {% endif %}
 {# TODO:
 		Make hooks conditional on whether we have javascript or hooks.

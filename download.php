@@ -5,15 +5,18 @@ include_once( 'includes/Zipper.php' );
 // Helpers
 $sanitizer = new MWStew\Sanitizer( $_POST );
 $templating = new MWStew\Templating();
-$builder = new MWStew\Builder( $sanitizer, $sanitizer->getParam( 'ext_name' ) );
+$builder = new MWStew\Builder(
+	$sanitizer->getParam( 'ext_name' ),
+	$sanitizer->getParam( 'ext_display_name' )
+);
 
 $useHooksFile = false;
 
 /* Get sanitized parameters */
 $params = array(
-	"lowername" => $builder->getLowercaseExtName(),
-	"name" => $builder->getExtName(),
-	"fullName" => $sanitizer->getParam( 'ext_full_name' ),
+	"name" => $builder->getName(),
+	"lowername" => MWStew\Sanitizer::getKeyFormat( $builder->getName() ),
+	"displayName" => $builder->getDisplayName(),
 	"author" => $sanitizer->getParam( 'ext_author' ),
 	"version" => strval( $sanitizer->getParam( 'ext_version' ) || "0.0.0" ),
 	"license" => $sanitizer->getParam( 'ext_license' ),
@@ -35,11 +38,11 @@ if ( $sanitizer->getParam( 'ext_dev_js' ) !== null ) {
 	$builder->addFile( '.jshintrc', $templating->render( '.jshintrc' ) );
 	$builder->addFile( 'Gruntfile.js', $templating->render( 'Gruntfile.js' ) );
 	$builder->addFile( 'package.json', $templating->render( 'package.json', $params ) );
-	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
-	$builder->addFile( 'modules/ext.' . $builder->getNormalizedName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
+	$builder->addFile( 'modules/ext.' . $builder->getName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
+	$builder->addFile( 'modules/ext.' . $builder->getName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
 
 	// Add unit test file
-	$builder->addFile( 'tests/' . $builder->getNormalizedName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
+	$builder->addFile( 'tests/' . $builder->getName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
 
 	$useHooksFile = true;
 }
@@ -49,7 +52,7 @@ if ( $sanitizer->getParam( 'ext_dev_php' ) !== null ) {
 	$builder->addFile( 'composer.json', $templating->render( 'composer.json' ) );
 
 	// Add unit test file
-	$builder->addFile( 'tests/ ' . $builder->getNormalizedName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
+	$builder->addFile( 'tests/ ' . $builder->getName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
 }
 
 // Special page
@@ -64,8 +67,8 @@ if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 			'name' => array(
 				'full' => $specialPageFullName,
 				'noNamespace' => $specialPageShortName,
-				'lowerNoNamespace' => lcfirst( $specialPageShortName ),
-				'i18nKey' => 'special-' . lcfirst( $specialPageShortName ),
+				'lowerNoNamespace' => MWStew\Sanitizer::getKeyFormat( $specialPageShortName ),
+				'i18nKey' => 'special-' . MWStew\Sanitizer::getKeyFormat( $specialPageShortName ),
 			),
 			'className' => $specialPageClassName,
 			'title' => $sanitizer->getParam( 'ext_specialpage_title' ),
@@ -78,7 +81,7 @@ if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 		'specials/' . $specialPageClassName . '.php',
 		$templating->render( 'specials/SpecialPage.php', $params )
 	);
-	$builder->addFile( $builder->getNormalizedName() . ".alias.php", $templating->render( 'extension.alias.php', $params ) );
+	$builder->addFile( $builder->getName() . ".alias.php", $templating->render( 'extension.alias.php', $params ) );
 }
 
 // Hooks
@@ -86,18 +89,18 @@ $hookArray = $sanitizer->getParam( 'ext_hooks' );
 if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 	$useHooksFile = true;
 	$hooksObject = array();
-	$hooksClassName = $builder->getExtName() . "Hooks";
+	$hooksClassName = $builder->getName() . "Hooks";
 
 	// Build the array for extension.json
 	// and for Hooks.php.twig
 	foreach ( $hookArray as $hook ) {
-		$hooksObject[ $hook ] = $hooksClassName . "::on" . $hook;
+		$hooksObject[ $hook ] = $hooksClassName . '::on' . $hook;
 	}
 
 	$params += array(
 		// This is for extension.json file, to write out the "Hooks": {}
 		// object directly
-		"hooksObject" =>json_encode( $hooksObject, JSON_PRETTY_PRINT ),
+		"hooksObject" => json_encode( $hooksObject, JSON_UNESCAPED_UNICODE ),
 		// This is for the Hooks.php file, to include the hook subtemplates
 		"hooks" => $hookArray,
 	);
@@ -111,7 +114,7 @@ if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 $builder->addFile( "Hooks.php", $templating->render( 'Hooks.php', $params ) );
 
 // Extension file
-$builder->addFile( $builder->getExtName() . ".php", $templating->render( 'extension.php', $params ) );
+$builder->addFile( $builder->getName() . ".php", $templating->render( 'extension.php', $params ) );
 $builder->addFile( "extension.json", $templating->render( 'extension.json', $params ) );
 
 // Language file
@@ -119,6 +122,6 @@ $builder->addFile( 'i18n/en.json', $templating->render( 'i18n/en.json', $params 
 $builder->addFile( 'i18n/qqq.json', $templating->render( 'i18n/qqq.json', $params ) );
 
 // Send to download
-$zip = new MWStew\Zipper( BASE_PATH . '/temp/', $builder->getNormalizedName() );
+$zip = new MWStew\Zipper( BASE_PATH . '/temp/', $builder->getName() );
 $zip->addFilesToZip( $builder->getFiles() );
 $zip->download();

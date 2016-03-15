@@ -1,7 +1,8 @@
 {
 	"require": {
 		"oojs/oojs-ui": "*",
-		"twig/twig": "~1.0"
+		"twig/twig": "~1.0",
+		"phpunit/phpunit": "5.0.*"
 	},
 	"autoload": {
 		"classmap": [ "includes" ]

@@ -21,7 +21,7 @@ $styles = array(
 	</head>
 <body>
 <!-- "Fork me on github" banner !-->
-<a href="https://github.com/mooeypoo/MWStew"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<a href="https://github.com/mooeypoo/MWStew" class="mwstew-ui-forkgithub"><img style="top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 
 	<div class="wrapper">
@@ -78,7 +78,7 @@ $styles = array(
 			new OOUI\FieldLayout(
 				new OOUI\TextInputWidget( array(
 					"placeholder" => "My Mediawiki Extension",
-					"name" => "ext_full_name",
+					"name" => "ext_display_name",
 				) ),
 				array(
 					"label" => "Extension full name. (If not given, the extension name will be used)",
@@ -238,8 +238,8 @@ $hooks = array(
 	'AlternateEdit' => "This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.",
 	'AlternateEditPreview' => "This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.",
 );
-for ( $hooks as $hook => $desc ) {
-	$hookFields = new OOUI\FieldLayout(
+foreach ( $hooks as $hook => $desc ) {
+	$hookFields[] = new OOUI\FieldLayout(
 		new OOUI\CheckboxInputWidget( array(
 			"name" => "ext_hooks[]",
 			"value" => $hook,

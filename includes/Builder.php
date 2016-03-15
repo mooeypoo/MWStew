@@ -2,21 +2,21 @@
 
 namespace MWStew;
 
+/**
+ * Class to build the hierarchical information for
+ * the extension, including its symbolic names and
+ * file structure.
+ */
 class Builder {
-	protected $rawName = '';
-	protected $normalizedExtName = '';
-	protected $extName = '';
-
-	protected $sanitizer = null;
+	protected $name = '';
+	protected $displayName = '';
 
 	protected $files = array();
 
-	public function __construct( $sanitizer, $extName ) {
-		$this->sanitizer = $sanitizer;
+	public function __construct( $extName, $extDisplayName = '' ) {
 
-		$this->rawName = $extName;
-		$this->normalizedExtName = str_replace( ' ', '', $sanitizer->getParam( 'ext_name' ) );
-		$this->extName = ucwords( $this->normalizedExtName );
+		$this->name = $extName;
+		$this->displayName = $extDisplayName ? $extDisplayName : $this->name;
 	}
 
 	public function addFile( $filename, $content ) {
@@ -27,19 +27,11 @@ class Builder {
 		return $this->files;
 	}
 
-	public function getRawName() {
-		return $this->rawName;
+	public function getName() {
+		return $this->name;
 	}
 
-	public function getNormalizedName() {
-		return $this->normalizedExtName;
-	}
-
-	public function getExtName() {
-		return $this->extName;
-	}
-
-	public function getLowercaseExtName() {
-		return lcfirst( $this->extName );
+	public function getDisplayName() {
+		return $this->displayName;
 	}
 }

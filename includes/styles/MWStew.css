@@ -10,6 +10,10 @@ body {
 	margin-right: auto;
 }
 
+.mwstew-ui-forkgithub img {
+	position: fixed;
+}
+
 .mwstew-ui-title {
 	margin: 1em 0 1em 0;
 	color: #1E3F57;
