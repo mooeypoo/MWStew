@@ -38,15 +38,15 @@ class Zipper {
 	public function download() {
 		// Send for download
 		ignore_user_abort( true );
-		header("Pragma: public");
-		header("Expires: 0");
-		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-		header("Cache-Control: public");
-		header("Content-Description: File Transfer");
-		header("Content-type: application/octet-stream");
-		header("Content-Disposition: attachment; filename=\"" . basename( $this->filename . "\"" ) );
-		header("Content-Transfer-Encoding: binary");
-		header("Content-Length: ". filesize( $this->zipTempFolder . $this->filename  ) );
+		header( 'Pragma: public' );
+		header( 'Expires: 0' );
+		header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
+		header( 'Cache-Control: public' );
+		header( 'Content-Description: File Transfer' );
+		header( 'Content-type: application/octet-stream' );
+		header( 'Content-Disposition: attachment; filename=\"' . basename( $this->filename ) . '"'  );
+		header( 'Content-Transfer-Encoding: binary' );
+		header( 'Content-Length: ' . filesize( $this->zipTempFolder . $this->filename  ) );
 		ob_end_flush();
 		@readfile( $this->zipTempFolder . $this->filename );
 		// Delete the temporary zip

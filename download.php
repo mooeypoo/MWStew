@@ -1,5 +1,5 @@
 <?php
-require_once "bootstrap.php";
+require_once 'bootstrap.php';
 include_once( 'includes/Zipper.php' );
 
 // Helpers
@@ -14,18 +14,18 @@ $useHooksFile = false;
 
 /* Get sanitized parameters */
 $params = array(
-	"name" => $builder->getName(),
-	"lowername" => MWStew\Sanitizer::getKeyFormat( $builder->getName() ),
-	"displayName" => $builder->getDisplayName(),
-	"author" => $sanitizer->getParam( 'ext_author' ),
-	"version" => strval( $sanitizer->getParam( 'ext_version' ) || "0.0.0" ),
-	"license" => $sanitizer->getParam( 'ext_license' ),
-	"desc" => $sanitizer->getParam( 'ext_description' ),
-	"url" => $sanitizer->getParam( 'ext_url' ),
-	"parts" => array(
-		"javascript" => $sanitizer->getParam( 'ext_dev_js' ) !== null,
-		"php" => $sanitizer->getParam( 'ext_dev_php' ) !== null,
-		"specialpage" => $sanitizer->getParam( 'ext_specialpage_name' ) !== null,
+	'name' => $builder->getName(),
+	'lowername' => MWStew\Sanitizer::getKeyFormat( $builder->getName() ),
+	'displayName' => $builder->getDisplayName(),
+	'author' => $sanitizer->getParam( 'ext_author' ),
+	'version' => strval( $sanitizer->getParam( 'ext_version' ) || '0.0.0' ),
+	'license' => $sanitizer->getParam( 'ext_license' ),
+	'desc' => $sanitizer->getParam( 'ext_description' ),
+	'url' => $sanitizer->getParam( 'ext_url' ),
+	'parts' => array(
+		'javascript' => $sanitizer->getParam( 'ext_dev_js' ) !== null,
+		'php' => $sanitizer->getParam( 'ext_dev_php' ) !== null,
+		'specialpage' => $sanitizer->getParam( 'ext_specialpage_name' ) !== null,
 	)
 );
 
@@ -81,7 +81,7 @@ if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 		'specials/' . $specialPageClassName . '.php',
 		$templating->render( 'specials/SpecialPage.php', $params )
 	);
-	$builder->addFile( $builder->getName() . ".alias.php", $templating->render( 'extension.alias.php', $params ) );
+	$builder->addFile( $builder->getName() . '.alias.php', $templating->render( 'extension.alias.php', $params ) );
 }
 
 // Hooks
@@ -89,7 +89,7 @@ $hookArray = $sanitizer->getParam( 'ext_hooks' );
 if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 	$useHooksFile = true;
 	$hooksObject = array();
-	$hooksClassName = $builder->getName() . "Hooks";
+	$hooksClassName = $builder->getName() . 'Hooks';
 
 	// Build the array for extension.json
 	// and for Hooks.php.twig
@@ -98,11 +98,11 @@ if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 	}
 
 	$params += array(
-		// This is for extension.json file, to write out the "Hooks": {}
+		// This is for extension.json file, to write out the 'Hooks': {}
 		// object directly
-		"hooksObject" => json_encode( $hooksObject, JSON_UNESCAPED_UNICODE ),
+		'hooksObject' => json_encode( $hooksObject, JSON_UNESCAPED_UNICODE ),
 		// This is for the Hooks.php file, to include the hook subtemplates
-		"hooks" => $hookArray,
+		'hooks' => $hookArray,
 	);
 }
 
@@ -111,11 +111,11 @@ if ( $hookArray !== null && count( $hookArray ) > 0 ) {
 // see comment in extension.json.twig for the explanation of why this file is
 // added in to all boilerplates for the moment
 // Add: if ( $useHooksFile ) { }
-$builder->addFile( "Hooks.php", $templating->render( 'Hooks.php', $params ) );
+$builder->addFile( 'Hooks.php', $templating->render( 'Hooks.php', $params ) );
 
 // Extension file
-$builder->addFile( $builder->getName() . ".php", $templating->render( 'extension.php', $params ) );
-$builder->addFile( "extension.json", $templating->render( 'extension.json', $params ) );
+$builder->addFile( $builder->getName() . '.php', $templating->render( 'extension.php', $params ) );
+$builder->addFile( 'extension.json', $templating->render( 'extension.json', $params ) );
 
 // Language file
 $builder->addFile( 'i18n/en.json', $templating->render( 'i18n/en.json', $params ) );
