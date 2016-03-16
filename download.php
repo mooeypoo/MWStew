@@ -60,7 +60,7 @@ if ( $sanitizer->getParam( 'ext_dev_php' ) !== null ) {
 if ( $sanitizer->getParam( 'ext_specialpage_name' ) !== '' ) {
 	$specialPageFullName = $sanitizer->getParam( 'ext_specialpage_name' );
 	$specialPageShortName = str_replace( 'Special:', '', $specialPageFullName );
-	$specialPageClassName = str_replace( ':', '', $specialPageFullName );
+	$specialPageClassName = MWStew\Sanitizer::sanitizeFilename( str_replace( ':', '', $specialPageFullName ) );
 
 	$params += array(
 		'specialpage' => array(

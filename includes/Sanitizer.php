@@ -22,13 +22,24 @@ class Sanitizer {
 	}
 
 	/**
+	 * Sanitizes a string that will be in a folder or filename
+	 * structure, removes illegal or "dangerous" characters
+	 *
+	 * @param string $name Extension name
+	 * @return string Sanitizes extension name
+	 */
+	public static function sanitizeFilename( $name ) {
+		return preg_replace( "/[^a-zA-Z0-9_-]/", "", $name );
+	}
+
+	/**
 	 * Get a string formatted as a key. This can
 	 * be used for i18n messages or for css classes.
 	 *
 	 * For example:
-	 * * "MyExtension" => "myExtension"
-	 * * "MW Extension" => "mwExtension"
-	 * * "An-Extension Something" => "anExtensionSomething"
+	 * * 'MyExtension' => 'myExtension'
+	 * * 'MW Extension' => 'mwExtension'
+	 * * 'An-Extension Something' => 'anExtensionSomething'
 	 *
 	 * @param string $name Name to format
 	 * @return string Formatted key string

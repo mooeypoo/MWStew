@@ -15,7 +15,7 @@ class Builder {
 
 	public function __construct( $extName, $extDisplayName = '' ) {
 
-		$this->name = $extName;
+		$this->name = Sanitizer::sanitizeFilename( $extName );
 		$this->displayName = $extDisplayName ? $extDisplayName : $this->name;
 	}
 
