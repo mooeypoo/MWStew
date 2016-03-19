@@ -1,0 +1,56 @@
+body {
+  font-size: 14px;
+  font-family: sans-serif;
+  background: #DDE6ED;
+}
+.wrapper {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mwstew-ui-forkgithub img {
+  position: fixed;
+}
+.mwstew-ui-title {
+  margin: 1em 0 1em 0;
+  color: #1E3F57;
+}
+.mwstew-ui-title-main {
+  font-size: 1.8em;
+  font-weight: bold;
+  display: block;
+}
+.mwstew-ui-title-subtitle {
+  font-size: 1.2em;
+  display: block;
+}
+.mwstew-ui-form .oo-ui-fieldsetLayout {
+  border-radius: 0.5em;
+  background: #F5F5F5;
+  border: 1px solid #B3B3B3;
+  padding: 1em;
+}
+.mwstew-ui-form .oo-ui-fieldsetLayout > .oo-ui-labelElement-label {
+  font-size: 1.3em;
+}
+.mwstew-ui-form-fieldsets-submit {
+  text-align: center;
+}
+.mwstew-ui-prefixedTextInputWidget {
+  display: table;
+}
+.mwstew-ui-prefixedTextInputWidget-row {
+  display: table-row;
+}
+.mwstew-ui-prefixedTextInputWidget-prefix {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0.5em;
+  border: 1px solid #cccccc;
+  border-right: 0;
+  background-color: #ffffff;
+}
+.mwstew-ui-prefixedTextInputWidget-input {
+  display: table-cell;
+  vertical-align: middle;
+}
