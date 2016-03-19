@@ -196,9 +196,10 @@ $styles = array(
 		'items' => array(
 			// Name
 			new OOUI\FieldLayout(
-				new OOUI\TextInputWidget( array(
-					'placeholder' => 'Special:MyExtension',
+				new MWStew\PrefixedTextInputWidget( array(
+					'placeholder' => 'MyExtensionPage',
 					'name' => 'ext_specialpage_name',
+					'prefix' => 'Special:',
 				) ),
 				array(
 					'label' => 'Special page name',

@@ -152,16 +152,16 @@
         },
         {
             "name": "oojs/oojs-ui",
-            "version": "v0.16.2",
+            "version": "v0.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wikimedia/oojs-ui.git",
-                "reference": "2d09879110c6cd4b88fc5aaf8e5b4d4d39836870"
+                "reference": "837e96a7aaa535adace3527ee1af079170e1c6b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wikimedia/oojs-ui/zipball/2d09879110c6cd4b88fc5aaf8e5b4d4d39836870",
-                "reference": "2d09879110c6cd4b88fc5aaf8e5b4d4d39836870",
+                "url": "https://api.github.com/repos/wikimedia/oojs-ui/zipball/837e96a7aaa535adace3527ee1af079170e1c6b6",
+                "reference": "837e96a7aaa535adace3527ee1af079170e1c6b6",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +227,7 @@
             ],
             "description": "Provides library of common widgets, layouts, and windows.",
             "homepage": "https://www.mediawiki.org/wiki/OOjs_UI",
-            "time": "2016-03-08 19:50:22"
+            "time": "2016-03-16 19:05:24"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
