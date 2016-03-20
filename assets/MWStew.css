@@ -1,7 +1,10 @@
 body {
   font-size: 14px;
   font-family: sans-serif;
-  background: #DDE6ED;
+  color: #333;
+  background: #FFF8EF;
+  padding: 0;
+  margin: 0;
 }
 .wrapper {
   width: 600px;
@@ -11,22 +14,9 @@ body {
 .mwstew-ui-forkgithub img {
   position: fixed;
 }
-.mwstew-ui-title {
-  margin: 1em 0 1em 0;
-  color: #1E3F57;
-}
-.mwstew-ui-title-main {
-  font-size: 1.8em;
-  font-weight: bold;
-  display: block;
-}
-.mwstew-ui-title-subtitle {
-  font-size: 1.2em;
-  display: block;
-}
 .mwstew-ui-form .oo-ui-fieldsetLayout {
   border-radius: 0.5em;
-  background: #F5F5F5;
+  background: #ffffff;
   border: 1px solid #B3B3B3;
   padding: 1em;
 }
@@ -53,4 +43,26 @@ body {
 .mwstew-ui-prefixedTextInputWidget-input {
   display: table-cell;
   vertical-align: middle;
+}
+.mwstew-ui-pageHeadSectionWidget {
+  width: 100%;
+  background-color: #777777;
+  height: 250px;
+  margin-bottom: 2em;
+}
+.mwstew-ui-pageHeadSectionWidget-title {
+  position: relative;
+  top: 125px;
+  text-shadow: rgba(0, 0, 0, 0.6) 0 1px 2px;
+  text-align: center;
+  color: #FFF8EF;
+}
+.mwstew-ui-pageHeadSectionWidget-title-main {
+  display: block;
+  font-size: 4em;
+  font-weight: bold;
+}
+.mwstew-ui-pageHeadSectionWidget-title-sub {
+  display: block;
+  font-size: 1.5em;
 }
