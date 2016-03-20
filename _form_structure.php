@@ -83,13 +83,18 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 		),
 		// License
 		new OOUI\FieldLayout(
-			new OOUI\RadioSelectInputWidget( array(
+			// new OOUI\RadioSelectInputWidget( array(
+			new OOUI\DropdownInputWidget( array(
 				// 'placeholder' => 'Your extension license',
 				'required' => true,
 				'name' => 'ext_license',
 				'options' => array(
-					array( 'data' => 'MIT License', 'label' => 'MIT License' ),
-					array( 'data' => 'GPLv2 License', 'label' => 'GPLv2 License' ),
+					array( 'data' => 'MIT', 'label' => 'MIT' ),
+					array( 'data' => 'GPL-2.0', 'label' => 'GPL v2' ),
+					array( 'data' => 'GPL-2.0+', 'label' => 'GPL v2 and above' ),
+					array( 'data' => 'LGPL-2.0', 'label' => 'LGPL v2' ),
+					array( 'data' => 'LGPL-2.0+', 'label' => 'LGPL v2 and above' ),
+					array( 'data' => 'LGPL-3.0', 'label' => 'LGPL v3' ),
 				)
 			) ),
 			array(
@@ -218,7 +223,7 @@ $submitFieldsetLayout = new OOUI\FieldsetLayout( array(
 			'label' => 'Create boilerplate',
 			'classes' => array( 'mwstew-ui-form-fieldsets-submit-button' ),
 			'type' => 'submit',
-			'flags' => array( 'constructive' ),
+			'flags' => array( 'primary', 'progressive' ),
 		) )
 	),
 ) );
