@@ -1,8 +1,8 @@
 {
-{% if specialpage %}
-	"{{ specialpage.name.i18nKey }}-title": "{{ specialpage.title }}",
-	"{{ specialpage.name.i18nKey }}-intro": "{{ specialpage.intro }}",
+{% if parts.specialpage %}
+	"{{ specialpage.name.i18n }}-title": "{{ specialpage.title }}",
+	"{{ specialpage.name.i18n }}-intro": "{{ specialpage.intro }}",
 {% endif %}
-	"{{ lowername }}": "{{ displayName }}",
-	"{{ lowername }}-desc": "{{ desc }}"
+	"{{ lowerCamelName }}": "{{ title }}",
+	"{{ lowerCamelName }}-desc": "{{ desc }}"
 }

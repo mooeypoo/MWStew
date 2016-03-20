@@ -2,11 +2,79 @@
 
 namespace MWStew;
 
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\NestedValidationException;
+
 class Sanitizer {
+	protected $fieldPrefix = 'ext_';
 	protected $rawParams = array();
+	protected $errors = array();
 
 	public function __construct( $params ) {
 		$this->rawParams = $params;
+
+		return !$this->validate();
+	}
+
+	public function getErrors() {
+		return $this->errors;
+	}
+
+	public function getRawParams() {
+		return $this->rawParams;
+	}
+
+	/**
+	 * Validate all raw parameters
+	 * @return boolean Validation successful
+	 */
+	protected function validate() {
+		// Reset
+		$this->errors = array();
+
+		$validators = array(
+			// Names
+			array(
+				'validator' => v::stringType()->noWhitespace()->length(1,32),
+				'fields' => array( 'name', 'special_name' ),
+				'optional' => array( 'special_name' ),
+			),
+			// Numbers
+			array(
+				'validator' => v::numeric(),
+				'fields' => array( 'version' ),
+				'optional' => array( 'version' ),
+			),
+			// Booleans
+			array(
+				'validator' => v::trueVal(),
+				'fields' => array( 'dev_php', 'dev_js' ),
+				'optional' => array( 'dev_php', 'dev_js' ),
+			),
+			// URL
+			array(
+				'validator' => v::url(),
+				'fields' => array( 'url' ),
+				'optional' => array( 'url' ),
+			),
+		);
+
+		foreach ( $validators as $v ) {
+			foreach ( $v[ 'fields' ] as $field ) {
+				try {
+					$fieldVal = isset( $this->rawParams[ $this->fieldPrefix . $field ] ) ?
+						$this->rawParams[ $this->fieldPrefix . $field ] : null;
+					if ( in_array( $field, $v[ 'optional' ] ) ) {
+						v::optional( $v[ 'validator' ] )->assert( $fieldVal );
+					} else {
+						$v[ 'validator' ]->assert( $fieldVal );
+					}
+				} catch ( NestedValidationException $exception ) {
+					$this->errors[ $field ] = $exception->getMessages();
+				}
+			}
+		}
+		return count( $this->errors ) === 0;
 	}
 
 	/**
@@ -28,7 +96,7 @@ class Sanitizer {
 	 * @param string $name Extension name
 	 * @return string Sanitizes extension name
 	 */
-	public static function sanitizeFilename( $name ) {
+	public static function getFilenameFormat( $name ) {
 		return preg_replace( "/[^a-zA-Z0-9_-]/", "", $name );
 	}
 
@@ -44,7 +112,7 @@ class Sanitizer {
 	 * @param string $name Name to format
 	 * @return string Formatted key string
 	 */
-	public static function getKeyFormat( $name ) {
+	public static function getLowerCamelFormat( $name ) {
 		$normalized = preg_replace( '/[^a-zA-Z0-9]/', ' ', $name );
 
 		$pieces = explode( ' ', $normalized );

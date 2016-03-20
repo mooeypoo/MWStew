@@ -1,13 +1,13 @@
 <?php
 /**
- * {{ specialpage.name.noNamespace }} SpecialPage for {{ name }} extension
+ * {{ specialpage.name.lowerCamelName }} SpecialPage for {{ name }} extension
  *
  * @file
  * @ingroup Extensions
  */
 class {{ specialpage.className }} extends SpecialPage {
 	public function __construct() {
-		parent::__construct( '{{ specialpage.name.noNamespace }}' );
+		parent::__construct( '{{ specialpage.name.lowerCamelName }}' );
 	}
 
 	/**
@@ -17,9 +17,9 @@ class {{ specialpage.className }} extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( '{{ specialpage.name.i18nKey }}-title' ) );
+		$out->setPageTitle( $this->msg( '{{ specialpage.name.i18n }}-title' ) );
 		$out->addHelpLink( 'How to become a MediaWiki hacker' );
-		$out->addWikiMsg( '{{ specialpage.name.i18nKey }}-intro' );
+		$out->addWikiMsg( '{{ specialpage.name.i18n }}-intro' );
 	}
 
 	protected function getGroupName() {

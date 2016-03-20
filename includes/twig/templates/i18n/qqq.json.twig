@@ -1,8 +1,8 @@
 {
-{% if specialpage %}
-	"{{ specialpage.name.i18nKey }}-intro": "Description appearing on top of <tvar|1>{{ '{{' }}ll|{{ specialpage.name.fullName }}{{ '}}' }}</>.",
-	"{{ specialpage.name.i18nKey }}-title": "Title of the special page {{ specialpage.name.fullName }}",
+{% if parts.specialpage %}
+	"{{ specialpage.name.i18n }}-intro": "Description appearing on top of <tvar|1>Special:{{ '{{' }}ll|{{ specialpage.name.name }}{{ '}}' }}</>.",
+	"{{ specialpage.name.i18n }}-title": "Title of the special page Special:{{ specialpage.name.name }}",
 {% endif %}
-	"{{ lowername }}": "The name of the extension.",
-	"{{ lowername }}-desc": "{{ '{{' }}desc|name={{ name }}|url={{ url }}{{ '}}' }}"
+	"{{ lowerCamelName }}": "The name of the extension.",
+	"{{ lowerCamelName }}-desc": "{{ '{{' }}desc|name={{ name }}|url={{ url }}{{ '}}' }}"
 }

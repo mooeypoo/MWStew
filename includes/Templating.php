@@ -17,6 +17,7 @@ class Templating {
 		$this->twig = new \Twig_Environment( $this->loader, array(
 			'cache' => $this->twigPath . '/cache',
 		) );
+		$this->twig->clearCacheFiles();
 	}
 
 	public function render( $templateName, $data = array() ) {

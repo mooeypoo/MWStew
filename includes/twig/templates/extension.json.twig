@@ -5,8 +5,8 @@
 		"{{ author }}"
 	],
 	"url": "{{ url }}",
-	"namemsg": "{{ lowername }}",
-	"descriptionmsg": "{{ lowername }}-desc",
+	"namemsg": "{{ lowerCamelName }}",
+	"descriptionmsg": "{{ lowerCamelName }}-desc",
 	"license-name": "{{ license }}",
 	"type": "other",
 	"manifest_version": 1,
@@ -17,12 +17,12 @@
 	},
 {% if parts.javascript %}
 	"ResourceModules": {
-		"ext.{{ lowername }}": {
+		"ext.{{ lowerCamelName }}": {
 			"scripts": [
-				"modules/ext.{{ lowername }}.js"
+				"modules/ext.{{ lowerCamelName }}.js"
 			],
 			"styles": [
-				"modules/ext.{{ lowername }}.css"
+				"modules/ext.{{ lowerCamelName }}.css"
 			],
 			"messages": [],
 			"dependencies": []
@@ -34,7 +34,7 @@
 {% endif %}
 {% if parts.specialpage %}
 	"SpecialPages": {
-		"{{ specialpage.name.noNamespace }}": "{{ specialname.className }}"
+		"{{ specialpage.name.lowerCamelName }}": "{{ specialname.className }}"
 	},
 	"ExtensionMessagesFiles": {
 		"{{ name }}Alias": "{{ name }}.alias.php"

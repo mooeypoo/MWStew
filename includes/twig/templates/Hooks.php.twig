@@ -9,7 +9,7 @@
 class {{ name }}Hooks {
 {% if javascript %}
 	/**
-	 * Conditionally register the unit testing module for the ext.{{ lowername }} module
+	 * Conditionally register the unit testing module for the ext.{{ lowerCamelName }} module
 	 * only if that module is loaded
 	 *
 	 * @param array $testModules The array of registered test modules
@@ -17,12 +17,12 @@ class {{ name }}Hooks {
 	 * @return true
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
-		$testModules['qunit']['ext.{{ lowername }}.tests'] = array(
+		$testModules['qunit']['ext.{{ lowerCamelName }}.tests'] = array(
 			'scripts': [
 				'tests/ext.{{ name }}.test.js'
 			],
 			'dependencies': [
-				'ext.{{ lowername }}'
+				'ext.{{ lowerCamelName }}'
 			]
 			'localBasePath' => __DIR__ . '/..',
 			'remoteExtPath' => '{{ name }}',

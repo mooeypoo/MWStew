@@ -18,14 +18,14 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'align' => 'left',
 			)
 		),
-		// Name
+		// title
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
 				'placeholder' => 'My Mediawiki Extension',
 				'name' => 'ext_display_name',
 			) ),
 			array(
-				'label' => 'Extension full name. (If not given, the extension name will be used)',
+				'label' => 'Extension title (If not given, the extension name will be used)',
 				// 'help' => 'Your extension human-readable name.',
 				'align' => 'left',
 			)
