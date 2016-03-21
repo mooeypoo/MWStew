@@ -35,5 +35,6 @@ class {{ name }}Hooks {
 
 {% for hook in hooks %}
 {% include '_hooks/' ~ hook ~ '.php.twig' %}
+
 {% endfor %}
 }

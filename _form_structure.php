@@ -187,6 +187,9 @@ $hookFields = array();
 $hooks = array(
 	'AlternateEdit' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
 	'AlternateEditPreview' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
+	'EditFilter' => 'Perform checks on an edit.',
+	'EditFormPreloadText' => 'Called when edit page for new article is shown.',
+	'EditPage::attemptSave' => 'Called before an article is saved, that is at the beginning of internalAttemptSave() is called.',
 );
 foreach ( $hooks as $hook => $desc ) {
 	$hookFields[] = new OOUI\FieldLayout(
