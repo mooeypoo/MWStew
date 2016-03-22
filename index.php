@@ -4,14 +4,10 @@ require_once 'bootstrap.php';
 // TODO: Add more translations and add some input to choose
 // a language to display
 $lang = isset( $_GET[ 'lang' ] ) ? $_GET[ 'lang' ] : 'en';
-// TODO: We should be able to infer, from a list of languages,
-// the default direction. For the moment, we'll just have it
-// hard-coded parameter.
-$dir = isset( $_GET[ 'dir' ] ) ? $_GET[ 'dir' ] : 'ltr';
 
 // Message
-$msg = new MWStew\Message( $lang, $dir );
-
+$msg = new MWStew\Message( $lang );
+$dir = $msg->getDir();
 // OOUI
 OOUI\Theme::setSingleton( new OOUI\MediaWikiTheme() );
 OOUI\Element::setDefaultDir( $dir );

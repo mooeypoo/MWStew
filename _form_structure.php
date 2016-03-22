@@ -148,7 +148,7 @@ $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 			new MWStew\PrefixedTextInputWidget( array(
 				'placeholder' => 'MyExtensionPage',
 				'name' => 'ext_specialpage_name',
-				'prefix' => 'Special:',
+				'prefix' => $msg->text( 'form-specialpage-field-name-prefix' ),
 			) ),
 			array(
 				'label' => $msg->text( 'form-specialpage-field-name-label' ),

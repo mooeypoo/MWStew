@@ -20,6 +20,7 @@
 	"form-devenv-field-php-label": "PHP development tools",
 	"form-devenv-field-js-label": "JavaScript development tools",
 	"form-specialpage-field-name-label": "Special page name",
+	"form-specialpage-field-name-prefix": "Special:",
 	"form-specialpage-field-title-label": "Special page title",
 	"form-specialpage-field-title-placeholder": "Welcome to my SpecialPage",
 	"form-specialpage-field-intro-label": "Special page introduction",

@@ -7,13 +7,48 @@ namespace MWStew;
  * with basic support for parameters.
  */
 class Message {
+	/**
+	 * The language of the translation
+	 * @var string
+	 */
 	protected $lang = 'en';
+
+	/**
+	 * Directionality of the translation
+	 * @var string
+	 */
 	protected $dir = 'ltr';
+
+	/**
+	 * The translation data
+	 * @var array
+	 */
 	protected $data = array();
 
-	public function __construct( $langCode = 'en', $langDir = 'ltr' ) {
+	/**
+	 * An array of RTL languages
+	 * @var array
+	 */
+	protected $rtlLangs = array( 'he', 'ar', 'fa', 'ur', 'yi', 'ji' );
+
+	/**
+	 * Construct the message object according to the given language
+	 * (or default to English). If a direction is given, it will
+	 * force the default and language-default directionality.
+	 *
+	 * @param string $langCode Language code
+	 * @param string $forceLangDir Forced language directionality.
+	 *  If given, it will override any default direction.
+	 */
+	public function __construct( $langCode = 'en', $forceLangDir = '' ) {
 		$this->lang = $langCode ? $langCode : 'en';
-		$this->dir = $langDir ? $langDir : 'ltr';
+
+		// Get direction
+		$this->dir = 'ltr';
+		if ( in_array( $this->lang, $this->rtlLangs ) ) {
+			$this->dir = 'rtl';
+		}
+		$this->dir = $forceLangDir ? $forceLangDir : $this->dir;
 
 		// Load language file
 		$filename = BASE_PATH . '/i18n/' . $this->lang . '.json';
@@ -30,6 +65,15 @@ class Message {
 			echo $e->getMessage();
 			die();
 		}
+	}
+
+	/**
+	 * Get the current directionality of the translation
+	 *
+	 * @return string Direcitonality 'rtl' or 'ltr'
+	 */
+	public function getDir() {
+		return $this->dir;
 	}
 
 	/**

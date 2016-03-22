@@ -19,8 +19,8 @@
 	"form-general-field-license-label": "Label for the 'License' field in the form.",
 	"form-devenv-field-php-label": "Label for the checkbox for development environment tools for PHP",
 	"form-devenv-field-js-label": "Label for the checkbox for development environment tools for JavaScript",
-
 	"form-specialpage-field-name-label": "Label for the 'Special page name' field in the form.",
+	"form-specialpage-field-name-prefix": "A prefix label for the special page name. It should be the localized alias for 'Special' namespace in MediaWiki.",
 	"form-specialpage-field-title-label": "Label for the 'Special page title' field in the form.",
 	"form-specialpage-field-title-placeholder": "Placeholder text for the special page name input.",
 	"form-specialpage-field-intro-label": "Label for the 'Special page introduction' field in the form.",
