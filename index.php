@@ -20,6 +20,7 @@ require_once '_form_structure.php';
 ?>
 <html>
 	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title><?php echo $msg->text( 'html-title' ); ?></title>
 <?php
 	// Stylesheets

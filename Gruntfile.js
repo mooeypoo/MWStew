@@ -34,4 +34,5 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'default', [ 'less', 'csslint', 'cssjanus' ] );
+	grunt.registerTask( 'build', [ 'less', 'cssjanus' ] );
 };
