@@ -2,7 +2,7 @@
 
 // Extension details
 $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'label' => 'General details',
+	'label' => $msg->text( 'form-section-general-label' ),
 	'classes' => array( 'mwstew-ui-form-fieldsets-general' ),
 	'items' => array(
 		// Name
@@ -13,7 +13,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'name' => 'ext_name',
 			) ),
 			array(
-				'label' => 'Extension name (no spaces)',
+				'label' => $msg->text( 'form-general-field-name-label' ),
 				// 'help' => 'Your extension name. Cannot have spaces.',
 				'align' => 'left',
 			)
@@ -21,11 +21,11 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 		// title
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
-				'placeholder' => 'My Mediawiki Extension',
+				'placeholder' => $msg->text( 'form-general-field-title-placeholder' ),
 				'name' => 'ext_display_name',
 			) ),
 			array(
-				'label' => 'Extension title (If not given, the extension name will be used)',
+				'label' => $msg->text( 'form-general-field-title-label' ),
 				// 'help' => 'Your extension human-readable name.',
 				'align' => 'left',
 			)
@@ -33,12 +33,12 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 		// Author
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
-				'placeholder' => 'Your name',
+				'placeholder' => $msg->text( 'form-general-field-author-placeholder' ),
 				'required' => true,
 				'name' => 'ext_author',
 			) ),
 			array(
-				'label' => 'Extension author',
+				'label' => $msg->text( 'form-general-field-author-label' ),
 				// 'help' => 'Tell us who the author is. This will be public; you can use your real name or the username people know you by.',
 				'align' => 'left',
 			)
@@ -50,7 +50,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'name' => 'ext_version',
 			) ),
 			array(
-				'label' => 'Extension version',
+				'label' => $msg->text( 'form-general-field-version-label' ),
 				// 'help' => 'The version of this extension. Defaults to 0.0.0'
 				'align' => 'left',
 			)
@@ -58,13 +58,13 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 		// Description
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
-				'placeholder' => 'Description',
+				'placeholder' => $msg->text( 'form-general-field-desc-placeholder' ),
 				'multiline' => true,
 				'rows' => 3,
 				'name' => 'ext_description',
 			) ),
 			array(
-				'label' => 'Extension description',
+				'label' => $msg->text( 'form-general-field-desc-label' ),
 				// 'help' => 'Describe what your extension does.'
 				'align' => 'left',
 			)
@@ -76,7 +76,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'name' => 'ext_url',
 			) ),
 			array(
-				'label' => 'Extension URL',
+				'label' => $msg->text( 'form-general-field-url-label' ),
 				// 'help' => 'A URL for the extension details.',
 				'align' => 'left',
 			)
@@ -98,7 +98,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 				)
 			) ),
 			array(
-				'label' => 'Extension license',
+				'label' => $msg->text( 'form-general-field-license-label' ),
 				// 'help' => 'Choose an extension license. MIT License is prefered; all extensions should be open source license.',
 				'align' => 'left',
 			)
@@ -108,7 +108,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 
 // Extension development details
 $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'label' => 'Development environment',
+	'label' => $msg->text( 'form-section-devenv-label' ),
 	'classes' => array( 'mwstew-ui-form-fieldset-development' ),
 	'items' => array(
 		// PHP Development
@@ -118,7 +118,7 @@ $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'value' => 1,
 			) ),
 			array(
-				'label' => 'PHP development tools',
+				'label' => $msg->text( 'form-devenv-field-php-label' ),
 				'align' => 'inline',
 				'help' => 'Select if your extension has PHP pieces, to add PHP development tools.',
 			)
@@ -130,7 +130,7 @@ $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'value' => 1,
 			) ),
 			array(
-				'label' => 'JavaScript development tools',
+				'label' => $msg->text( 'form-devenv-field-js-label' ),
 				'align' => 'inline',
 				'help' => 'Select if your extension has JavaScript modules, to add JavaScript development tools.',
 			)
@@ -140,7 +140,7 @@ $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 
 // Special page
 $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'label' => 'Special page',
+	'label' => $msg->text( 'form-section-specialpage-label' ),
 	'classes' => array( 'mwstew-ui-form-fieldsets-specialpage' ),
 	'items' => array(
 		// Name
@@ -151,31 +151,31 @@ $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 				'prefix' => 'Special:',
 			) ),
 			array(
-				'label' => 'Special page name',
+				'label' => $msg->text( 'form-specialpage-field-name-label' ),
 				'align' => 'left',
 			)
 		),
 		// Title
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
-				'placeholder' => 'Welcome to MyExtension',
+				'placeholder' => $msg->text( 'form-general-field-title-placeholder' ),
 				'name' => 'ext_specialpage_title',
 			) ),
 			array(
-				'label' => 'Special page title',
+				'label' => $msg->text( 'form-specialpage-field-title-label' ),
 				'align' => 'left',
 			)
 		),
 		// Text
 		new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( array(
-				'placeholder' => 'An introduction to Special:MyExtension page.',
+				'placeholder' => $msg->text( 'form-specialpage-field-intro-placeholder' ),
 				'name' => 'ext_specialpage_intro',
 				'multiline' => true,
 				'rows' => 3
 			) ),
 			array(
-				'label' => 'Special page introduction',
+				'label' => $msg->text( 'form-specialpage-field-intro-label' ),
 				'align' => 'left',
 			)
 		),
@@ -185,6 +185,7 @@ $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 // Extension hooks
 $hookFields = array();
 $hooks = array(
+	// TODO: i18n these
 	'AlternateEdit' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
 	'AlternateEditPreview' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
 	'EditFilter' => 'Perform checks on an edit.',
@@ -205,8 +206,9 @@ foreach ( $hooks as $hook => $desc ) {
 	);
 }
 
+// Hooks
 $extHooksFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'label' => 'Extension hooks',
+	'label' => $msg->text( 'form-section-hooks-label' ),
 	'classes' => array( 'mwstew-ui-form-fieldset-hooks' ),
 	'items' => $hookFields,
 ) );
@@ -223,7 +225,7 @@ $submitFieldsetLayout = new OOUI\FieldsetLayout( array(
 	'classes' => array( 'mwstew-ui-form-fieldsets-submit' ),
 	'items' => array(
 		new OOUI\ButtonInputWidget( array(
-			'label' => 'Create boilerplate',
+			'label' => $msg->text( 'form-submit-label' ),
 			'classes' => array( 'mwstew-ui-form-fieldsets-submit-button' ),
 			'type' => 'submit',
 			'flags' => array( 'primary', 'progressive' ),

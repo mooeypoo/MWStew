@@ -2,7 +2,7 @@
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
 	grunt.loadNpmTasks( 'grunt-contrib-csslint' );
-	// grunt.loadNpmTasks( 'grunt-cssjanus' );
+	grunt.loadNpmTasks( 'grunt-cssjanus' );
 
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -21,18 +21,17 @@ module.exports = function ( grunt ) {
 				'assets/MWStew.css'
 			],
 		},
-		// cssjanus: {
-		// 	options: {
-		// 		generateExactDuplicates: true
-		// 	},
-		// 	site: {
-		// 		files: {
-		// 			'assets/MWStew.rtl.css': 'assets/MWStew.css'
-		// 		}
-		// 	}
-		// }
+		cssjanus: {
+			options: {
+				generateExactDuplicates: true
+			},
+			site: {
+				files: {
+					'assets/MWStew.rtl.css': 'assets/MWStew.css'
+				}
+			}
+		}
 	} );
 
-	// grunt.registerTask( 'default', [ 'less', 'csslint', 'cssjanus' ] );
-	grunt.registerTask( 'default', [ 'less', 'csslint' ] );
+	grunt.registerTask( 'default', [ 'less', 'csslint', 'cssjanus' ] );
 };

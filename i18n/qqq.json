@@ -1,0 +1,28 @@
+{
+	"html-title": "Page title for MWStew that appears on the browser window.",
+	"page-title": "Title for the MWStew site",
+	"page-subtitle": "Subtitle for the MWStew site",
+	"form-section-general-label": "Label for the general details section of the form",
+	"form-section-devenv-label": "Label for the development environment section of the form",
+	"form-section-specialpage-label": "Label for the special page section of the form",
+	"form-section-hooks-label": "Label for the hooks section of the form",
+	"form-submit-label": "Label for the submit button of the form",
+	"form-general-field-name-label": "Label for the 'Name' field in the form. Only accepts English alphabet, without spaces.",
+	"form-general-field-title-label": "Label for the 'Title' field in the form. If not used, the extension name is used.",
+	"form-general-field-title-placeholder": "Placeholder text for the extension title input.",
+	"form-general-field-author-label": "Label for the 'Author' field in the form.",
+	"form-general-field-author-placeholder": "Placeholder text for the author input.",
+	"form-general-field-version-label": "Label for the 'Version' field in the form.",
+	"form-general-field-desc-label": "Label for the 'Description' field in the form.",
+	"form-general-field-desc-placeholder": "Placeholder text for the description input.",
+	"form-general-field-url-label": "Label for the 'URL' field in the form.",
+	"form-general-field-license-label": "Label for the 'License' field in the form.",
+	"form-devenv-field-php-label": "Label for the checkbox for development environment tools for PHP",
+	"form-devenv-field-js-label": "Label for the checkbox for development environment tools for JavaScript",
+
+	"form-specialpage-field-name-label": "Label for the 'Special page name' field in the form.",
+	"form-specialpage-field-title-label": "Label for the 'Special page title' field in the form.",
+	"form-specialpage-field-title-placeholder": "Placeholder text for the special page name input.",
+	"form-specialpage-field-intro-label": "Label for the 'Special page introduction' field in the form.",
+	"form-specialpage-field-intro-placeholder": "Placeholder text for the special page description input."
+}
