@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mooeypoo/MWStew.svg?branch=master)](https://travis-ci.org/mooeypoo/MWStew)
+[![Stories in Ready](https://badge.waffle.io/mooeypoo/MWStew.svg?label=ready&title=Ready)](http://waffle.io/mooeypoo/MWStew)
 
 # MWStew: MediaWiki Extension Boilerplate Maker.
 
