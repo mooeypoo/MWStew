@@ -1,5 +1,4 @@
 <?php
-require_once "bootstrap.php";
 
 class SanitizerTest extends PHPUnit_Framework_TestCase {
 
