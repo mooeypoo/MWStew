@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/mooeypoo/MWStew.svg?branch=master)](https://travis-ci.org/mooeypoo/MWStew)
+[![Dependency Status](https://www.versioneye.com/user/projects/56f6408335630e0034fda4eb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56f6408335630e0034fda4eb)
+[![Dependency Status](https://www.versioneye.com/user/projects/56f63e7335630e003888ac01/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56f63e7335630e003888ac01)
 [![Stories in Ready](https://badge.waffle.io/mooeypoo/MWStew.svg?label=ready&title=Ready)](http://waffle.io/mooeypoo/MWStew)
+
+[![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg?style=plastic)](https://raw.githubusercontent.com/mooeypoo/MWStew/master/LICENSE)
 
 # MWStew: MediaWiki Extension Boilerplate Maker.
 
