@@ -32,10 +32,14 @@ require_once '_form_structure.php';
 <body dir="<?php echo $dir; ?>">
 <?php
 	// Header
-	echo new MWStew\PageHeadSectionWidget( [
-		'title' => $msg->text( 'page-title' ),
-		'subtitle' => $msg->text( 'page-subtitle' )
-	] );
+	echo new MWStew\PageHeadSectionWidget(
+		$msg,
+		[
+			'title' => $msg->text( 'page-title' ),
+			'subtitle' => $msg->text( 'page-subtitle' ),
+			'lang' => $lang,
+		]
+	);
 ?>
 
 	<div class='wrapper'>

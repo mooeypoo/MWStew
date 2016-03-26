@@ -54,9 +54,18 @@ body {
   height: 250px;
   margin-bottom: 2em;
 }
+.mwstew-ui-pageHeadSectionWidget-langSelectorForm {
+  width: 15em;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 1em;
+}
+.mwstew-ui-pageHeadSectionWidget-langSelectorForm-input {
+  width: 10em;
+}
 .mwstew-ui-pageHeadSectionWidget-title {
   position: relative;
-  top: 125px;
+  top: calc( 125px  - 4em);
   text-shadow: rgba(0, 0, 0, 0.6) 0 1px 2px;
   text-align: center;
   color: #FFF8EF;

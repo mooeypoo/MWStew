@@ -4,9 +4,20 @@
 	height: @pageHeadSectionHeight;
 	margin-bottom: 2em;
 
+	&-langSelectorForm {
+		width: 15em;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 1em;
+
+		&-input {
+			width: 10em;
+		}
+	}
+
 	&-title {
 		position: relative;
-		top: @pageHeadSectionHeight / 2;
+		top: ~"calc(" @pageHeadSectionHeight / 2 ~" - 4em)";
 		text-shadow: rgba(0, 0, 0, 0.6) 0 1px 2px;
 		text-align: center;
 		color: @bodyBackgroundColor;

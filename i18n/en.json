@@ -2,6 +2,7 @@
 	"html-title": "MWStew: MediaWiki extension boilerplate maker",
 	"page-title": "MWStew",
 	"page-subtitle": "MediaWiki extension boilerplate maker",
+	"lang-selector-submit": "Select",
 	"form-section-general-label": "General details",
 	"form-section-devenv-label": "Development environment",
 	"form-section-specialpage-label": "Special page",
