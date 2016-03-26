@@ -29,45 +29,45 @@ class SanitizerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function testSanitizerFileName() {
+	public function testFilenameFormat() {
 		$this->assertEquals(
 			'MyExtension',
-			MWStew\Sanitizer::sanitizeFilename( '../../MyExtension' )
+			MWStew\Sanitizer::getFilenameFormat( '../../MyExtension' )
 		);
 		$this->assertEquals(
 			'MyExtensionOrSomething',
-			MWStew\Sanitizer::sanitizeFilename( '../../MyExtension/../OrSomething' )
+			MWStew\Sanitizer::getFilenameFormat( '../../MyExtension/../OrSomething' )
 		);
 		$this->assertEquals(
 			'My_Extension_OrSomething',
-			MWStew\Sanitizer::sanitizeFilename( 'My_Extension_OrSomething' )
+			MWStew\Sanitizer::getFilenameFormat( 'My_Extension_OrSomething' )
 		);
 		$this->assertEquals(
 			'MyExtension',
-			MWStew\Sanitizer::sanitizeFilename( ' My Extension ' )
+			MWStew\Sanitizer::getFilenameFormat( ' My Extension ' )
 		);
 	}
 
-	public function testSanitizerKeyFormat() {
+	public function testSanitizerLowerCamelFormat() {
 		$this->assertEquals(
 			'myExtension',
-			MWStew\Sanitizer::getKeyFormat( 'MyExtension' )
+			MWStew\Sanitizer::getLowerCamelFormat( 'MyExtension' )
 		);
 		$this->assertEquals(
 			'myExtension',
-			MWStew\Sanitizer::getKeyFormat( 'My Extension' )
+			MWStew\Sanitizer::getLowerCamelFormat( 'My Extension' )
 		);
 		$this->assertEquals(
 			'myExtension',
-			MWStew\Sanitizer::getKeyFormat( 'My.Extension' )
+			MWStew\Sanitizer::getLowerCamelFormat( 'My.Extension' )
 		);
 		$this->assertEquals(
 			'someExtensionSomething',
-			MWStew\Sanitizer::getKeyFormat( 'Some-extension something' )
+			MWStew\Sanitizer::getLowerCamelFormat( 'Some-extension something' )
 		);
 		$this->assertEquals(
 			'someExtensionSomeThing',
-			MWStew\Sanitizer::getKeyFormat( 'Some-extension someThing' )
+			MWStew\Sanitizer::getLowerCamelFormat( 'Some-extension someThing' )
 		);
 	}
 

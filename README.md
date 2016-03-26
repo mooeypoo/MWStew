@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mooeypoo/MWStew.svg?branch=master)](https://travis-ci.org/mooeypoo/MWStew)
+
 # MWStew: MediaWiki Extension Boilerplate Maker.
 
 A web interface to create boilerplate extension for MediaWiki development.
