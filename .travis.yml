@@ -5,5 +5,5 @@ php: 5.6
 install: composer install
 
 script:
-  - phpunit tests/BuilderTest.php
-  - phpunit tests/SanitizerTest.php
+  - phpunit tests/BuilderTest.php --colors=auto
+  - phpunit tests/SanitizerTest.php --colors=auto
