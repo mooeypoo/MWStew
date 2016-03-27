@@ -4,16 +4,28 @@ namespace MWStew;
 
 use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Exceptions\ValidationException;
 
 class Sanitizer {
 	protected $fieldPrefix = 'ext_';
 	protected $rawParams = array();
 	protected $errors = array();
 
+
 	public function __construct( $params ) {
 		$this->rawParams = $params;
 
-		return !$this->validate();
+		return !$this->validateParams();
+	}
+
+	public static function validate( $type, $value = '' ) {
+		$v = self::getValidator( $type );
+		try {
+			$v->assert( $value );
+		} catch ( ValidationException $e ) {
+			return false;
+		}
+		return true;
 	}
 
 	public function getErrors() {
@@ -28,32 +40,32 @@ class Sanitizer {
 	 * Validate all raw parameters
 	 * @return boolean Validation successful
 	 */
-	protected function validate() {
+	protected function validateParams() {
 		// Reset
 		$this->errors = array();
 
 		$validators = array(
 			// Names
 			array(
-				'validator' => v::stringType()->noWhitespace()->length(1,32),
+				'validator' => $this->getValidator( 'names' ),
 				'fields' => array( 'name', 'special_name' ),
 				'optional' => array( 'special_name' ),
 			),
 			// Numbers
 			array(
-				'validator' => v::numeric(),
+				'validator' => $this->getValidator( 'numbers' ),
 				'fields' => array( 'version' ),
 				'optional' => array( 'version' ),
 			),
 			// Booleans
 			array(
-				'validator' => v::trueVal(),
+				'validator' => $this->getValidator( 'booleans' ),
 				'fields' => array( 'dev_php', 'dev_js' ),
 				'optional' => array( 'dev_php', 'dev_js' ),
 			),
 			// URL
 			array(
-				'validator' => v::url(),
+				'validator' => $this->getValidator( 'urls' ),
 				'fields' => array( 'url' ),
 				'optional' => array( 'url' ),
 			),
@@ -75,6 +87,17 @@ class Sanitizer {
 			}
 		}
 		return count( $this->errors ) === 0;
+	}
+
+	protected static function getValidator( $name ) {
+		$validators = array(
+			'names' => v::alnum('_-')->noWhitespace()->length(1,32),
+			'numbers' => v::numeric(),
+			'booleans' => v::trueVal(),
+			'urls' => v::url()
+		);
+		return isset( $validators[ $name ] ) ?
+			$validators[ $name ] : null;
 	}
 
 	/**

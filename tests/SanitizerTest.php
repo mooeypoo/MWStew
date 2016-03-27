@@ -70,4 +70,47 @@ class SanitizerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testSanitizerValidate() {
+		$tests = [
+			'names' => [
+				'valid' => [ 'MyExt', 'MyExt123', 'MyExt_12-3' ],
+				'invalid' => [ 'My ext', '\\n', '', '123456789012345678901234567890123' ]
+			],
+			'numbers' => [
+				'valid' => [ '132', '0', '123' ],
+				'invalid' => [ 'str', '123s' ],
+			],
+			'booleans' => [
+				'valid' => [ 'true', true, '1' ],
+			],
+			'urls' => [
+				'valid' => [
+					'http://example.com',
+					'http://mediawiki.org/wiki/Extension:Something',
+				],
+				'invalid' => [
+					'http://',
+					'something.com'
+				],
+			],
+		];
+
+		foreach ( $tests as $type => $strings ) {
+			if ( isset( $strings[ 'valid' ] ) ) {
+				foreach ( $strings[ 'valid' ] as $str ) {
+					$this->assertTrue(
+						MWStew\Sanitizer::validate( $type, $str )
+					);
+				}
+			}
+
+			if ( isset( $strings[ 'invalid' ] ) ) {
+				foreach ( $strings[ 'invalid' ] as $str ) {
+					$this->assertNotTrue(
+						MWStew\Sanitizer::validate( $type, $str )
+					);
+				}
+			}
+		}
+	}
 }
