@@ -1,4 +1,9 @@
 {
+	"@metadata": {
+		"authors": [
+			"Moriel Schottlender"
+		]
+	},
 	"html-title": "Page title for MWStew that appears on the browser window.",
 	"page-title": "Title for the MWStew site",
 	"page-subtitle": "Subtitle for the MWStew site",
