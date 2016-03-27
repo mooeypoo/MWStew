@@ -20,8 +20,14 @@ require_once '_form_structure.php';
 ?>
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title><?php echo $msg->text( 'html-title' ); ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title><?php echo $msg->text( 'html-title' ); ?></title>
+		<!-- JavaScript -->
+		<script src="assets/lib/jquery-1.12.2.min.js"></script>
+		<script src="assets/lib/oojs.jquery.js"></script>
+		<script src="assets/lib/ooui/oojs-ui.min.js"></script>
+		<script src="assets/lib/ooui/oojs-ui-mediawiki.js"></script>
+		<script src="assets/MWStew.js"></script>
 <?php
 	// Stylesheets
 	for ( $i = 0; $i < count( $styles ); $i++ ) {

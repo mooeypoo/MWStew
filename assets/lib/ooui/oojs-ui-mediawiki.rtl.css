@@ -1,12 +1,12 @@
 /*!
- * OOjs UI v0.16.3
+ * OOjs UI v0.16.4
  * https://www.mediawiki.org/wiki/OOjs_UI
  *
  * Copyright 2011–2016 OOjs UI Team and other contributors.
  * Released under the MIT license
  * http://oojs.mit-license.org
  *
- * Date: 2016-03-18T23:29:16Z
+ * Date: 2016-03-27T01:10:56Z
  */
 .oo-ui-element-hidden {
 	display: none !important;
@@ -206,8 +206,8 @@
 	color: #347bff;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:hover {
-	background-color: rgba(52, 123, 255, 0.1);
-	border-color: rgba(31, 73, 153, 0.5);
+	background-color: #ebf2ff;
+	border-color: #859dcc;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button:focus {
 	box-shadow: inset 0 0 0 1px #1f4999;
@@ -227,8 +227,8 @@
 	color: #347bff;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-constructive > .oo-ui-buttonElement-button:hover {
-	background-color: rgba(52, 123, 255, 0.1);
-	border-color: rgba(31, 73, 153, 0.5);
+	background-color: #ebf2ff;
+	border-color: #859dcc;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-constructive > .oo-ui-buttonElement-button:focus {
 	box-shadow: inset 0 0 0 1px #1f4999;
@@ -248,8 +248,8 @@
 	color: #d11d13;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:hover {
-	background-color: rgba(209, 29, 19, 0.1);
-	border-color: rgba(115, 16, 10, 0.5);
+	background-color: #fbe8e7;
+	border-color: #b77c79;
 }
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-destructive > .oo-ui-buttonElement-button:focus {
 	box-shadow: inset 0 0 0 1px #73100a;
@@ -850,11 +850,9 @@
 	        box-sizing: border-box;
 	position: absolute;
 	right: 0;
-	border-radius: 2px;
 	width: 1.6em;
 	height: 1.6em;
-	background-color: white;
-	border: 1px solid #777777;
+	background-color: #ffffff;
 	background-image: url("themes/mediawiki/images/icons/check-constructive-deprecated.png");
 	background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url("themes/mediawiki/images/icons/check-constructive-deprecated.svg");
 	background-image:         linear-gradient(transparent, transparent), /* @embed */ url("themes/mediawiki/images/icons/check-constructive-deprecated.svg");
@@ -863,6 +861,8 @@
 	background-position: center center;
 	background-origin: border-box;
 	background-size: 0 0;
+	border: 1px solid #777777;
+	border-radius: 2px;
 }
 .oo-ui-checkboxInputWidget input[type="checkbox"]:checked + span {
 	background-size: 100% 100%;
@@ -968,11 +968,9 @@
 	        box-sizing: border-box;
 	position: absolute;
 	right: 0;
-	border-radius: 100%;
 	width: 1.6em;
 	height: 1.6em;
-	background: white;
-	border: 1px solid #777777;
+	background-color: #ffffff;
 	background-image: url("themes/mediawiki/images/icons/circle-constructive-deprecated.png");
 	background-image: -webkit-linear-gradient(transparent, transparent), /* @embed */ url("themes/mediawiki/images/icons/circle-constructive-deprecated.svg");
 	background-image:         linear-gradient(transparent, transparent), /* @embed */ url("themes/mediawiki/images/icons/circle-constructive-deprecated.svg");
@@ -981,6 +979,8 @@
 	background-position: center center;
 	background-origin: border-box;
 	background-size: 0 0;
+	border: 1px solid #777777;
+	border-radius: 100%;
 }
 .oo-ui-radioInputWidget input[type="radio"]:checked + span {
 	background-size: 100% 100%;
@@ -1187,35 +1187,6 @@
 .oo-ui-textInputWidget-labelPosition-before.oo-ui-iconElement > .oo-ui-labelElement-label {
 	margin-right: 2.475em;
 }
-.oo-ui-prefixedTextInputWidget {
-	display: table;
-}
-.oo-ui-prefixedTextInputWidget-row {
-	display: table-row;
-}
-.oo-ui-prefixedTextInputWidget-input {
-	display: table-cell;
-	vertical-align: middle;
-}
-.oo-ui-prefixedTextInputWidget-prefix {
-	display: table-cell;
-	vertical-align: middle;
-	padding: 0 0.5em;
-}
-.oo-ui-prefixedTextInputWidget-prefix {
-	box-shadow: none;
-	color: #555555;
-	background: #ffffff;
-	border: 1px solid #cccccc;
-	border-left: 0;
-	border-radius: 2px;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-.oo-ui-prefixedTextInputWidget-input input {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
 .oo-ui-menuSelectWidget {
 	position: absolute;
 	background-color: #ffffff;
@@ -1384,14 +1355,14 @@
 }
 
 /*!
- * OOjs UI v0.16.3
+ * OOjs UI v0.16.4
  * https://www.mediawiki.org/wiki/OOjs_UI
  *
  * Copyright 2011–2016 OOjs UI Team and other contributors.
  * Released under the MIT license
  * http://oojs.mit-license.org
  *
- * Date: 2016-03-18T23:29:16Z
+ * Date: 2016-03-27T01:10:56Z
  */
 .oo-ui-draggableElement-handle,
 .oo-ui-draggableElement-handle.oo-ui-widget {
@@ -2018,7 +1989,7 @@
 	left: 2em;
 }
 .oo-ui-selectFileWidget-supported.oo-ui-widget-enabled.oo-ui-selectFileWidget-canDrop .oo-ui-selectFileWidget-dropTarget {
-	background-color: rgba(52, 123, 255, 0.1);
+	background-color: #ebf2ff;
 }
 .oo-ui-selectFileWidget-empty.oo-ui-widget-disabled .oo-ui-selectFileWidget-dropTarget,
 .oo-ui-selectFileWidget-notsupported .oo-ui-selectFileWidget-dropTarget {
@@ -2371,19 +2342,19 @@
 	border-bottom-right-radius: 0;
 	border-right-width: 0;
 }
-.oo-ui-numberInputWidget .oo-ui-textInputWidget input {
+.oo-ui-numberInputWidget-buttoned .oo-ui-textInputWidget input {
 	border-radius: 0;
 }
 
 /*!
- * OOjs UI v0.16.3
+ * OOjs UI v0.16.4
  * https://www.mediawiki.org/wiki/OOjs_UI
  *
  * Copyright 2011–2016 OOjs UI Team and other contributors.
  * Released under the MIT license
  * http://oojs.mit-license.org
  *
- * Date: 2016-03-18T23:29:16Z
+ * Date: 2016-03-27T01:10:56Z
  */
 .oo-ui-popupTool .oo-ui-popupWidget-popup,
 .oo-ui-popupTool .oo-ui-popupWidget-anchor {
@@ -2836,14 +2807,14 @@
 }
 
 /*!
- * OOjs UI v0.16.3
+ * OOjs UI v0.16.4
  * https://www.mediawiki.org/wiki/OOjs_UI
  *
  * Copyright 2011–2016 OOjs UI Team and other contributors.
  * Released under the MIT license
  * http://oojs.mit-license.org
  *
- * Date: 2016-03-18T23:29:16Z
+ * Date: 2016-03-27T01:10:56Z
  */
 .oo-ui-window {
 	background: transparent;
@@ -3220,14 +3191,14 @@
 }
 
 /*!
- * OOjs UI v0.16.3
+ * OOjs UI v0.16.4
  * https://www.mediawiki.org/wiki/OOjs_UI
  *
  * Copyright 2011–2016 OOjs UI Team and other contributors.
  * Released under the MIT license
  * http://oojs.mit-license.org
  *
- * Date: 2016-03-18T23:29:16Z
+ * Date: 2016-03-27T01:10:56Z
  */
 .oo-ui-icon-add {
 	background-image: url("themes/mediawiki/images/icons/add.png");
