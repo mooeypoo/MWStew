@@ -99,6 +99,10 @@ class ExtensionDetails {
 		return $this->name;
 	}
 
+	public function getLowerCamelName() {
+		return Sanitizer::getLowerCamelFormat( $this->name );
+	}
+
 	public function getClassName() {
 		return $this->name;
 	}
@@ -125,7 +129,7 @@ class ExtensionDetails {
 	public function getAllParams() {
 		return array(
 			'name' => $this->name,
-			'lowerCamelName' => Sanitizer::getLowerCamelFormat( $this->name ),
+			'lowerCamelName' => $this->getLowerCamelName(),
 			'title' => $this->title,
 			'author' => $this->author,
 			'version' => $this->version,
@@ -147,5 +151,76 @@ class ExtensionDetails {
 				'intro' => $this->specialIntro,
 			),
 		);
+	}
+
+	/**
+	 * Output extension details in the JSON format that fits
+	 * extension.json schema
+	 *
+	 * @param  boolean $outputAsString Return a prettified json
+	 *  string. Otherwise, the object is returned.
+	 * @return array Extension schema
+	 */
+	public function getExtensionJson( $outputAsString = false ) {
+		$json = [
+			'name' => $this->getName(),
+			'version' => $this->version,
+			'author' => [ $this->author ],
+			'url' => $this->url,
+			'namemsg' => $this->getLowerCamelName(),
+			'descriptionmsg' => $this->getLowerCamelName() . '-desc',
+			'license-name' => $this->license,
+			'type' => 'other',
+			'manifest_version' => 1,
+			'MessageDirs' => [],
+			'AutoloadClasses' => [],
+		];
+		$json[ 'MessageDirs' ][ $this->getName() ] = [ 'i18n' ];
+
+		// JavaScript
+		if ( $this->isEnvironment( 'js' ) ) {
+			$extModule = 'ext.' . $this->getLowerCamelName();
+
+			$json[ 'ResourceModules' ] = [
+				'ResourceLoaderTestModules' => $this->getName() . 'Hooks::onResourceLoaderTestModules',
+			];
+			$json[ $extModule ] = [
+				'scripts' => [ 'modules/' . $extModule . '.js' ],
+				'styles' => [ 'modules/' . $extModule . '.css' ],
+				'messages' => [],
+				'dependencies' => [],
+			];
+		}
+
+		// Special Page
+		if ( $this->hasSpecialPage() ) {
+			$json[ 'SpecialPages' ] = [
+				'ExtensionMessagesFiles' => [],
+			];
+			$json[ 'SpecialPages' ][ 'ExtensionMessagesFiles' ][ $this->getName() . 'Alias' ] = $this->getName() . '.alias.php';
+
+			$json[ 'SpecialPages' ][ Sanitizer::getLowerCamelFormat( $this->specialName ) ] = $this->getSpecialPageClassName();
+
+			$json[ 'AutoloadClasses' ][ $this->getSpecialPageClassName() ] = 'specials/SpecialPage.php';
+		}
+
+		// Hooks
+		$hookClassName = $this->getName() . 'Hooks';
+		if ( $this->isEnvironment( 'js' ) || count( $this->getHooks() ) ) {
+			$json[ $hookClassName ] = 'Hooks.php';
+		}
+
+		// Hook list
+		if ( count( $this->getHooks() ) > 0 ) {
+			$json[ 'Hooks' ] = [];
+
+			foreach ( $this->getHooks() as $hook ) {
+				$json[ 'Hooks' ][ $hook ] = $hookClassName . '::on' . $hook;
+			}
+		}
+
+		return $outputAsString ?
+			json_encode( $json, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE ) :
+			$json;
 	}
 }

@@ -56,38 +56,9 @@ if ( $details->hasSpecialPage() ) {
 	$builder->addFile( $details->getName() . '.alias.php', $templating->render( 'extension.alias.php', $params ) );
 }
 
-// Hooks
-$hookArray = $details->getHooks();
-if ( count( $hookArray ) > 0 ) {
-	$useHooksFile = true;
-	$hooksObject = array();
-	$hooksClassName = $details->getName() . 'Hooks';
-
-	// Build the array for extension.json
-	// and for Hooks.php.twig
-	foreach ( $hookArray as $hook ) {
-		$hooksObject[ $hook ] = $hooksClassName . '::on' . $hook;
-	}
-
-	$params += array(
-		// This is for extension.json file, to write out the 'Hooks': {}
-		// object directly
-		'hooksObject' => json_encode( $hooksObject, JSON_UNESCAPED_UNICODE ),
-		// This is for the Hooks.php file, to include the hook subtemplates
-		'hooks' => $hookArray,
-	);
-}
-
-// Add the hooks file if we need to
-// TODO: Make this actually conditional. This condition is commented out for now
-// see comment in extension.json.twig for the explanation of why this file is
-// added in to all boilerplates for the moment
-// Add: if ( $useHooksFile ) { }
-$builder->addFile( 'Hooks.php', $templating->render( 'Hooks.php', $params ) );
-
 // Extension file
 $builder->addFile( $details->getName() . '.php', $templating->render( 'extension.php', $params ) );
-$builder->addFile( 'extension.json', $templating->render( 'extension.json', $params ) );
+$builder->addFile( 'extension.json', $details->getExtensionJson( true ) );
 
 // Language file
 $builder->addFile( 'i18n/en.json', $templating->render( 'i18n/en.json', $params ) );
