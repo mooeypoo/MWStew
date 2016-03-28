@@ -14,8 +14,6 @@ $templating = new MWStew\Templating();
 $details = new MWStew\ExtensionDetails( $sanitizer->getRawParams() );
 $builder = new MWStew\Builder();
 
-$useHooksFile = false;
-
 /* Get sanitized parameters */
 $params = $details->getAllParams();
 
@@ -33,8 +31,6 @@ if ( $details->isEnvironment( 'js' ) ) {
 
 	// Add unit test file
 	$builder->addFile( 'tests/' . $details->getName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
-
-	$useHooksFile = true;
 }
 
 // PHP Development files
@@ -61,8 +57,8 @@ $builder->addFile( $details->getName() . '.php', $templating->render( 'extension
 $builder->addFile( 'extension.json', $details->getExtensionJson( true ) );
 
 // Language file
-$builder->addFile( 'i18n/en.json', $templating->render( 'i18n/en.json', $params ) );
-$builder->addFile( 'i18n/qqq.json', $templating->render( 'i18n/qqq.json', $params ) );
+$builder->addFile( 'i18n/en.json', $details->getLangFileJson( 'lang' ) );
+$builder->addFile( 'i18n/qqq.json', $details->getLangFileJson( 'doc' ) );
 
 // Send to download
 $zip = new MWStew\Zipper( BASE_PATH . '/temp/', $details->getName() );
