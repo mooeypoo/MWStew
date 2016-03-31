@@ -152,14 +152,13 @@ class ExtensionDetails {
 			),
 		);
 
-		$hooks = $this->getHooks();
-		if ( count( $hooks ) > 0 ) {
+		if ( count( $this->getHooks() ) > 0 ) {
 			$params[ 'hooks' ] = [];
-			foreach ( $hooks as $hook ) {
+
+			foreach ( $this->getHooks() as $hook ) {
 				$params[ 'hooks' ][] = $hook;
 			}
 		}
-
 		return $params;
 	}
 

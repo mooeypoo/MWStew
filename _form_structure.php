@@ -183,35 +183,30 @@ $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 ) );
 
 // Extension hooks
-$hookFields = array();
-$hooks = array(
-	// TODO: i18n these
-	'AlternateEdit' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
-	'AlternateEditPreview' => 'This hook gets called at the beginning of &action=edit, before any user permissions are checked or any edit checking is performed.',
-	'EditFilter' => 'Perform checks on an edit.',
-	'EditFormPreloadText' => 'Called when edit page for new article is shown.',
-	'EditPage::attemptSave' => 'Called before an article is saved, that is at the beginning of internalAttemptSave() is called.',
-);
-foreach ( $hooks as $hook => $desc ) {
-	$hookFields[] = new OOUI\FieldLayout(
-		new OOUI\CheckboxInputWidget( array(
-			'name' => 'ext_hooks[]',
-			'value' => $hook,
-		) ),
-		array(
-			'label' => $hook,
-			'align' => 'inline',
-			'help' => $desc,
-		)
-	);
+$hooks = json_decode( file_get_contents( 'includes/data/hooks.json' ), true );
+$hookFieldsets = array();
+foreach ( $hooks as $section => $list ) {
+	$hookFields = array();
+	foreach ( $list as $hook => $desc ) {
+		$hookFields[] = new OOUI\FieldLayout(
+			new OOUI\CheckboxInputWidget( array(
+				'name' => 'ext_hooks[]',
+				'value' => $hook,
+			) ),
+			array(
+				'label' => $hook,
+				'align' => 'inline',
+				'help' => $desc,
+			)
+		);
+	}
+	// Hooks
+	$hookFieldsets[] = new OOUI\FieldsetLayout( array(
+		'label' => $msg->text( 'form-section-hooks-' . $section ),
+		'classes' => array( 'mwstew-ui-form-fieldset-hooks' ),
+		'items' => $hookFields,
+	) );
 }
-
-// Hooks
-$extHooksFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'label' => $msg->text( 'form-section-hooks-label' ),
-	'classes' => array( 'mwstew-ui-form-fieldset-hooks' ),
-	'items' => $hookFields,
-) );
 
 // Form
 $form = new OOUI\FormLayout( array(
@@ -238,6 +233,17 @@ $form->addItems( array(
 	$extDetailsFieldsetLayout,
 	$extDevelopmentFieldsetLayout,
 	$extSpecialPageFieldsetLayout,
-	$extHooksFieldsetLayout,
+	$submitFieldsetLayout,
+) );
+
+// Hooks
+$form->addItems( array(
+	new OOUI\LabelWidget( [
+		'label' => $msg->text( 'form-section-hooks-label' ),
+		'classes' => array( 'mwstew-ui-form-section' ),
+	] )
+) );
+$form->addItems( $hookFieldsets );
+$form->addItems( array(
 	$submitFieldsetLayout,
 ) );

@@ -30,5 +30,6 @@
 	"form-specialpage-field-title-label": "כותרת הדף המיוחד",
 	"form-specialpage-field-title-placeholder": "ברוכים הבאים לדף המיוחד שלי",
 	"form-specialpage-field-intro-label": "פסקת הקדמה לדף המיוחד",
-	"form-specialpage-field-intro-placeholder": "זוהי ההקדמה לדף המיוחד שלי"
+	"form-specialpage-field-intro-placeholder": "זוהי ההקדמה לדף המיוחד שלי",
+	"form-section-hooks-edit-page": "Edit page hooks"
 }

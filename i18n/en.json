@@ -30,5 +30,6 @@
 	"form-specialpage-field-title-label": "Special page title",
 	"form-specialpage-field-title-placeholder": "Welcome to my SpecialPage",
 	"form-specialpage-field-intro-label": "Special page introduction",
-	"form-specialpage-field-intro-placeholder": "This is an introduction to my special page."
+	"form-specialpage-field-intro-placeholder": "This is an introduction to my special page.",
+	"form-section-hooks-edit-page": "Edit page hooks"
 }

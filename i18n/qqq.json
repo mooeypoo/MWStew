@@ -30,5 +30,6 @@
 	"form-specialpage-field-title-label": "Label for the 'Special page title' field in the form.",
 	"form-specialpage-field-title-placeholder": "Placeholder text for the special page name input.",
 	"form-specialpage-field-intro-label": "Label for the 'Special page introduction' field in the form.",
-	"form-specialpage-field-intro-placeholder": "Placeholder text for the special page description input."
+	"form-specialpage-field-intro-placeholder": "Placeholder text for the special page description input.",
+	"form-section-hooks-edit-page": "Title for the section containing hooks for edit page category."
 }
