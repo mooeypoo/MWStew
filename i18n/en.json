@@ -12,7 +12,7 @@
 	"form-section-devenv-label": "Development environment",
 	"form-section-specialpage-label": "Special page",
 	"form-section-hooks-label": "Extension hooks",
-	"form-submit-label": "Create boilerplate",
+	"form-submit-label": "Download extension package",
 	"form-general-field-name-label": "Extension name (English alphabet only, no spaces)",
 	"form-general-field-title-label": "Extension title (If not given, the extension name will be used)",
 	"form-general-field-title-placeholder": "My Extension",
