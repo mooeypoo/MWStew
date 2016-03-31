@@ -36,9 +36,6 @@ class Zipper {
 	}
 
 	public function download() {
-var_dump( basename( $this->filename ) );
-var_dump( $this->zipTempFolder . $this->filename );
-// die();
 		// Send for download
 		ignore_user_abort( true );
 		header( 'Pragma: public' );
