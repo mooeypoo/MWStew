@@ -58,7 +58,6 @@ if ( $details->isEnvironment( 'js' ) || count( $details->getHooks() ) > 0 ) {
 }
 
 // Extension file
-$builder->addFile( $details->getName() . '.php', $templating->render( 'extension.php', $params ) );
 $builder->addFile( 'extension.json', $details->getExtensionJson( true ) );
 
 // Language file
