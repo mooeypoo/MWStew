@@ -52,6 +52,11 @@ if ( $details->hasSpecialPage() ) {
 	$builder->addFile( $details->getName() . '.alias.php', $templating->render( 'extension.alias.php', $params ) );
 }
 
+// Hooks
+if ( $details->isEnvironment( 'js' ) || count( $details->getHooks() ) > 0 ) {
+	$builder->addFile( 'Hooks.php', $templating->render( 'Hooks.php', $params ) );
+}
+
 // Extension file
 $builder->addFile( $details->getName() . '.php', $templating->render( 'extension.php', $params ) );
 $builder->addFile( 'extension.json', $details->getExtensionJson( true ) );

@@ -127,7 +127,7 @@ class ExtensionDetails {
 	}
 
 	public function getAllParams() {
-		return array(
+		$params = array(
 			'name' => $this->name,
 			'lowerCamelName' => $this->getLowerCamelName(),
 			'title' => $this->title,
@@ -151,6 +151,16 @@ class ExtensionDetails {
 				'intro' => $this->specialIntro,
 			),
 		);
+
+		$hooks = $this->getHooks();
+		if ( count( $hooks ) > 0 ) {
+			$params[ 'hooks' ] = [];
+			foreach ( $hooks as $hook ) {
+				$params[ 'hooks' ][] = $hook;
+			}
+		}
+
+		return $params;
 	}
 
 	public function getSpecialPageKeyFormat() {
