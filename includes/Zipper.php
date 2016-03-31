@@ -36,6 +36,9 @@ class Zipper {
 	}
 
 	public function download() {
+var_dump( basename( $this->filename ) );
+var_dump( $this->zipTempFolder . $this->filename );
+// die();
 		// Send for download
 		ignore_user_abort( true );
 		header( 'Pragma: public' );
@@ -44,7 +47,7 @@ class Zipper {
 		header( 'Cache-Control: public' );
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-type: application/octet-stream' );
-		header( 'Content-Disposition: attachment; filename=\"' . basename( $this->filename ) . '"'  );
+		header( 'Content-Disposition: attachment; filename="' . basename( $this->filename ) . '"'  );
 		header( 'Content-Transfer-Encoding: binary' );
 		header( 'Content-Length: ' . filesize( $this->zipTempFolder . $this->filename  ) );
 		ob_end_flush();
