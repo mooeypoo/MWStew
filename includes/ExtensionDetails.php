@@ -247,7 +247,9 @@ class ExtensionDetails {
 	 * @return array language file schema
 	 */
 	public function getLangFileJson( $type = 'lang', $outputAsString = true ) {
-		$lang = [];
+		$lang = [
+			'@metadata' => [ 'authors' => [ $this->author ] ]
+		];
 
 		$lang[ $this->getLowerCamelName() ] = $type == 'lang' ?
 			$this->title :
