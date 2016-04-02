@@ -119,7 +119,7 @@ class ExtensionDetails {
 	}
 
 	public function getSpecialPageClassName() {
-		return str_replace( ' ', '_', $this->specialName );
+		return 'Special' . str_replace( ' ', '_', $this->specialName );
 	}
 
 	public function getHooks() {
@@ -204,12 +204,11 @@ class ExtensionDetails {
 
 		// Special Page
 		if ( $this->hasSpecialPage() ) {
-			$json[ 'SpecialPages' ] = [
-				'ExtensionMessagesFiles' => [],
-			];
-			$json[ 'SpecialPages' ][ 'ExtensionMessagesFiles' ][ $this->getName() . 'Alias' ] = $this->getName() . '.alias.php';
+			$json[ 'SpecialPages' ] = [];
 
-			$json[ 'SpecialPages' ][ Sanitizer::getLowerCamelFormat( $this->specialName ) ] = $this->getSpecialPageClassName();
+			$json[ 'ExtensionMessagesFiles' ][ $this->getName() . 'Alias' ] = $this->getName() . '.alias.php';
+
+			$json[ 'SpecialPages' ][ $this->specialName ] = $this->getSpecialPageClassName();
 
 			$json[ 'AutoloadClasses' ][ $this->getSpecialPageClassName() ] = 'specials/SpecialPage.php';
 		}
@@ -217,7 +216,7 @@ class ExtensionDetails {
 		// Hooks
 		$hookClassName = $this->getName() . 'Hooks';
 		if ( $this->isEnvironment( 'js' ) || count( $this->getHooks() ) ) {
-			$json[ $hookClassName ] = 'Hooks.php';
+			$json[ 'AutoloadClasses' ][ $hookClassName ] = 'Hooks.php';
 		}
 
 		// Hook list
@@ -225,7 +224,7 @@ class ExtensionDetails {
 			$json[ 'Hooks' ] = [];
 
 			foreach ( $this->getHooks() as $hook ) {
-				$json[ 'Hooks' ][ $hook ] = $hookClassName . '::on' . $hook;
+				$json[ 'Hooks' ][ $hook ] = [ $hookClassName . '::on' . $hook ];
 			}
 
 		}
