@@ -50,21 +50,34 @@ class Message {
 		}
 		$this->dir = $forceLangDir ? $forceLangDir : $this->dir;
 
+		$this->loadLangFile( $this->lang );
+
+		if ( $this->lang !== 'en' ) {
+			// Always load English for fallbacks
+			$this->loadLangFile( 'en' );
+		}
+	}
+
+	private function loadLangFile( $lang ) {
+		// Initialize
+		$this->data[ $lang ] = [];
+
 		// Load language file
-		$filename = BASE_PATH . '/i18n/' . $this->lang . '.json';
+		$filename = BASE_PATH . '/i18n/' . $lang . '.json';
 		if ( !file_exists( $filename ) ) {
-			// If language file doesn't exist,
-			// fall back on English
-			$filename = BASE_PATH . '/i18n/en.json';
+			return;
 		}
 
 		try {
-			$this->data = json_decode( file_get_contents( $filename ), true );
+			$data = json_decode( file_get_contents( $filename ), true );
 		} catch ( Exception $e ) {
+			// TODO: Handle this error better...
 			echo "Error: Could not find or open the base English language file.\n";
 			echo $e->getMessage();
 			die();
 		}
+
+		$this->data[ $lang ] = $data;
 	}
 
 	/**
@@ -119,21 +132,35 @@ class Message {
 	 * @return [type] [description]
 	 */
 	protected function parseKeyParams( $key, $params ) {
-		if ( !$key ) {
-			return '<no key given>';
-		} elseif ( !$this->keyExists( $key ) ) {
-			// Message not found. Display the key
+		$msg = $this->getRawMessageByKey( $key, $this->lang );
+
+		if ( !$msg ) {
 			return '<' . $key . '>';
 		}
 
-		$msg = $this->data[ $key ];
+		// Replace parameters
 		for ( $i = 0; $i < count( $params ); $i++ ) {
 			$msg = str_replace( '$' . $i, $params[ $i ], $msg );
 		}
 		return $msg;
 	}
 
-	protected function keyExists( $key ) {
-		return isset( $this->data[ $key ] );
+	protected function getRawMessageByKey( $key, $lang = 'en' ) {
+
+		if ( !$this->keyExists( $key, $this->lang ) ) {
+			// Key doesn't exist, see if it exists in
+			// the fallback English
+			if ( $this->lang !== 'en' && $this->keyExists( $key, 'en' ) ) {
+				return $this->data[ 'en' ][ $key ];
+			} else {
+				return null;
+			}
+		} else {
+			return $this->data[ $lang ][ $key ];
+		}
+	}
+
+	protected function keyExists( $key, $lang = 'en' ) {
+		return isset( $this->data[ $lang ][ $key ] );
 	}
 }
