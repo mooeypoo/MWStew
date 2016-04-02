@@ -194,9 +194,6 @@ class ExtensionDetails {
 		if ( $this->isEnvironment( 'js' ) ) {
 			$extModule = 'ext.' . $this->getLowerCamelName();
 
-			$json[ 'ResourceModules' ] = [
-				'ResourceLoaderTestModules' => $this->getName() . 'Hooks::onResourceLoaderTestModules',
-			];
 			$json[ $extModule ] = [
 				'scripts' => [ 'modules/' . $extModule . '.js' ],
 				'styles' => [ 'modules/' . $extModule . '.css' ],
@@ -230,6 +227,16 @@ class ExtensionDetails {
 			foreach ( $this->getHooks() as $hook ) {
 				$json[ 'Hooks' ][ $hook ] = $hookClassName . '::on' . $hook;
 			}
+
+		}
+		if ( $this->isEnvironment( 'js' ) ) {
+			if ( !isset( $json[ 'Hooks' ] ) ) {
+				$json[ 'Hooks' ] = [];
+			}
+
+			$json[ 'Hooks' ][ 'ResourceLoaderTestModules' ] = [
+				$this->getName() . 'Hooks::onResourceLoaderTestModules'
+			];
 		}
 
 		return $outputAsString ?
