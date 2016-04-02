@@ -38,7 +38,7 @@ if ( $details->isEnvironment( 'php' ) ) {
 	$builder->addFile( 'composer.json', $templating->render( 'composer.json' ) );
 
 	// Add unit test file
-	$builder->addFile( 'tests/ ' . $details->getName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
+	$builder->addFile( 'tests/' . $details->getName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
 }
 
 // Special page
