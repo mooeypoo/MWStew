@@ -126,6 +126,18 @@ class ExtensionDetails {
 		return $this->hooks;
 	}
 
+	protected function sanitizeHookFunctionName( $hook ) {
+		$hook = str_replace( '::', ':', $hook );
+		$parts = explode( ':', $hook );
+		$newHook = '';
+
+		foreach ( $parts as $p ) {
+			$newHook .= ucfirst( $p );
+		}
+
+		return $newHook;
+	}
+
 	public function getAllParams() {
 		$params = array(
 			'name' => $this->name,
@@ -224,7 +236,7 @@ class ExtensionDetails {
 			$json[ 'Hooks' ] = [];
 
 			foreach ( $this->getHooks() as $hook ) {
-				$json[ 'Hooks' ][ $hook ] = [ $hookClassName . '::on' . $hook ];
+				$json[ 'Hooks' ][ $hook ] = [ $hookClassName . '::on' . $this->sanitizeHookFunctionName( $hook ) ];
 			}
 
 		}
