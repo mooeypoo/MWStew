@@ -12,6 +12,8 @@
 	"form-section-devenv-label": "Label for the development environment section of the form",
 	"form-section-specialpage-label": "Label for the special page section of the form",
 	"form-section-hooks-label": "Label for the hooks section of the form",
+	"form-section-hooks-edit-page": "Title for the section containing hooks for edit page category.",
+	"form-section-hooks-page-rendering": "Title for the section containing hooks for the page rendering category.",
 	"form-submit-label": "Label for the submit button of the form",
 	"form-general-field-name-label": "Label for the 'Name' field in the form. Only accepts English alphabet, without spaces.",
 	"form-general-field-title-label": "Label for the 'Title' field in the form. If not used, the extension name is used.",
@@ -30,6 +32,5 @@
 	"form-specialpage-field-title-label": "Label for the 'Special page title' field in the form.",
 	"form-specialpage-field-title-placeholder": "Placeholder text for the special page name input.",
 	"form-specialpage-field-intro-label": "Label for the 'Special page introduction' field in the form.",
-	"form-specialpage-field-intro-placeholder": "Placeholder text for the special page description input.",
-	"form-section-hooks-edit-page": "Title for the section containing hooks for edit page category."
+	"form-specialpage-field-intro-placeholder": "Placeholder text for the special page description input."
 }

@@ -12,6 +12,8 @@
 	"form-section-devenv-label": "Development environment",
 	"form-section-specialpage-label": "Special page",
 	"form-section-hooks-label": "Extension hooks",
+	"form-section-hooks-edit-page": "Edit page hooks",
+	"form-section-hooks-page-rendering": "Page rendering hooks",
 	"form-submit-label": "Download extension package",
 	"form-general-field-name-label": "Extension name (English alphabet only, no spaces)",
 	"form-general-field-title-label": "Extension title (If not given, the extension name will be used)",
@@ -30,6 +32,5 @@
 	"form-specialpage-field-title-label": "Special page title",
 	"form-specialpage-field-title-placeholder": "Welcome to my SpecialPage",
 	"form-specialpage-field-intro-label": "Special page introduction",
-	"form-specialpage-field-intro-placeholder": "This is an introduction to my special page.",
-	"form-section-hooks-edit-page": "Edit page hooks"
+	"form-specialpage-field-intro-placeholder": "This is an introduction to my special page."
 }

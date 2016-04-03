@@ -11,5 +11,12 @@
 		"EditPageBeforeConflictDiff": "Allows modifying the EditPage object and output when there's an edit conflict.",
 		"EditPageBeforeEditButtons": "Used to modify the edit buttons on the edit form",
 		"EditPageBeforeEditChecks": "Allows modifying the edit checks below the textarea in the edit form"
+	},
+	"page-rendering": {
+		"AfterBuildFeedLinks": "Use this hook to remove feed links from the head of the output.",
+		"ArticlePageDataBefore": "Executes before data is loaded for the article requested",
+		"ArticleViewHeader": "Occurs when an articleheader is shown",
+		"PageRenderingHash": "Alter the parser cache option hash key",
+		"GalleryGetModes": "Allows extensions to add classes that can render different modes of a gallery."
 	}
 }

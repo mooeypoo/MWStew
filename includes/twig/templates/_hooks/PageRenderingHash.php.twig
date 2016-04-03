@@ -1,0 +1,15 @@
+	/**
+	 * Alter the parser cache option hash key
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageRenderingHash
+	 *
+	 * @param string &$confstr Reference to a hash key string
+	 *  which can be modified
+	 * @param User $user User object that is requesting
+	 *  the page
+	 * @param array &$forOptions Array of options used to
+	 *  generate the $confstr hash key
+	 */
+	public static function onPageRenderingHash( &$confstr, User $user, &$forOptions ) {
+		/* Your code here */
+	}

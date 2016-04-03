@@ -11,7 +11,6 @@
 	"form-section-general-label": "פרטים כלליים",
 	"form-section-devenv-label": "סביבת עבודה",
 	"form-section-specialpage-label": "דף מיוחד",
-	"form-section-hooks-label": "Extension hooks",
 	"form-submit-label": "הורד קבצי תוספת",
 	"form-general-field-name-label": "שם תוספת (אנגלית בלבד, וללא רווחים)",
 	"form-general-field-title-label": "כותרת התוספת (אם ריקה, שם התוספת יופיע במקום)",
@@ -30,6 +29,5 @@
 	"form-specialpage-field-title-label": "כותרת הדף המיוחד",
 	"form-specialpage-field-title-placeholder": "ברוכים הבאים לדף המיוחד שלי",
 	"form-specialpage-field-intro-label": "פסקת הקדמה לדף המיוחד",
-	"form-specialpage-field-intro-placeholder": "זוהי ההקדמה לדף המיוחד שלי",
-	"form-section-hooks-edit-page": "Edit page hooks"
+	"form-specialpage-field-intro-placeholder": "זוהי ההקדמה לדף המיוחד שלי"
 }

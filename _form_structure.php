@@ -182,6 +182,26 @@ $extSpecialPageFieldsetLayout = new OOUI\FieldsetLayout( array(
 	)
 ) );
 
+// Form
+$form = new OOUI\FormLayout( array(
+	'method' => 'post',
+	'action' => 'download.php',
+	'classes' => array( 'mwstew-ui-form' )
+) );
+
+// Submit button
+$submitFieldsetLayout = new OOUI\FieldsetLayout( array(
+	'classes' => array( 'mwstew-ui-form-fieldsets-submit' ),
+	'items' => array(
+		new OOUI\ButtonInputWidget( array(
+			'label' => $msg->text( 'form-submit-label' ),
+			'classes' => array( 'mwstew-ui-form-fieldsets-submit-button' ),
+			'type' => 'submit',
+			'flags' => array( 'primary', 'progressive' ),
+		) )
+	),
+) );
+
 // Extension hooks
 $hooks = json_decode( file_get_contents( 'includes/data/hooks.json' ), true );
 $hookFieldsets = array();
@@ -206,34 +226,15 @@ foreach ( $hooks as $section => $list ) {
 		'classes' => array( 'mwstew-ui-form-fieldset-hooks' ),
 		'items' => $hookFields,
 	) );
+	$hookFieldsets[] = clone( $submitFieldsetLayout );
 }
-
-// Form
-$form = new OOUI\FormLayout( array(
-	'method' => 'post',
-	'action' => 'download.php',
-	'classes' => array( 'mwstew-ui-form' )
-) );
-
-// Submit button
-$submitFieldsetLayout = new OOUI\FieldsetLayout( array(
-	'classes' => array( 'mwstew-ui-form-fieldsets-submit' ),
-	'items' => array(
-		new OOUI\ButtonInputWidget( array(
-			'label' => $msg->text( 'form-submit-label' ),
-			'classes' => array( 'mwstew-ui-form-fieldsets-submit-button' ),
-			'type' => 'submit',
-			'flags' => array( 'primary', 'progressive' ),
-		) )
-	),
-) );
 
 // Build the form
 $form->addItems( array(
 	$extDetailsFieldsetLayout,
 	$extDevelopmentFieldsetLayout,
 	$extSpecialPageFieldsetLayout,
-	$submitFieldsetLayout,
+	clone( $submitFieldsetLayout ),
 ) );
 
 // Hooks
@@ -244,6 +245,3 @@ $form->addItems( array(
 	] )
 ) );
 $form->addItems( $hookFieldsets );
-$form->addItems( array(
-	$submitFieldsetLayout,
-) );
