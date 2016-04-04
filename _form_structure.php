@@ -92,6 +92,8 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 					array( 'data' => 'MIT', 'label' => 'MIT' ),
 					array( 'data' => 'GPL-2.0', 'label' => 'GPL v2' ),
 					array( 'data' => 'GPL-2.0+', 'label' => 'GPL v2 and above' ),
+					array( 'data' => 'GPL-3.0', 'label' => 'GPL v3' ),
+					array( 'data' => 'GPL-3.0+', 'label' => 'GPL v3 and above' ),
 					array( 'data' => 'LGPL-2.0', 'label' => 'LGPL v2' ),
 					array( 'data' => 'LGPL-2.0+', 'label' => 'LGPL v2 and above' ),
 					array( 'data' => 'LGPL-3.0', 'label' => 'LGPL v3' ),
