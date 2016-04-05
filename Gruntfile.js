@@ -23,7 +23,7 @@ module.exports = function ( grunt ) {
 			},
 			site: [
 				'assets/MWStew.css'
-			],
+			]
 		},
 		cssjanus: {
 			options: {
@@ -40,16 +40,17 @@ module.exports = function ( grunt ) {
 		},
 		jshint: {
 			options: {
-				jshintrc: true,
+				jshintrc: true
 			},
 			all: [
+				'*.js',
 				'src/**/*.js',
 				'!node_modules/**'
 			]
 		},
 		jscs: {
 			src: [
-				'<%= jshint.all %>',
+				'<%= jshint.all %>'
 			]
 		},
 		concat: {
@@ -65,6 +66,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'default', [ 'less', 'csslint', 'cssjanus', 'banana', 'jshint', 'jscs', 'concat' ] );
-	grunt.registerTask( 'build', [ 'less', 'cssjanus' ] );
+	grunt.registerTask( 'default', [ 'lint', 'build' ] );
+	grunt.registerTask( 'lint', [ 'csslint', 'banana', 'jshint', 'jscs' ] );
+	grunt.registerTask( 'build', [ 'less', 'cssjanus', 'concat' ] );
 };
