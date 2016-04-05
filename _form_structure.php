@@ -86,6 +86,7 @@ $extDetailsFieldsetLayout = new OOUI\FieldsetLayout( array(
 			// new OOUI\RadioSelectInputWidget( array(
 			new OOUI\DropdownInputWidget( array(
 				// 'placeholder' => 'Your extension license',
+				'infusable' => true,
 				'required' => true,
 				'name' => 'ext_license',
 				'options' => array(
