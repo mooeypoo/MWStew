@@ -228,7 +228,6 @@ foreach ( $hooks as $section => $list ) {
 		'classes' => array( 'mwstew-ui-form-fieldset-hooks' ),
 		'items' => $hookFields,
 	) );
-	$hookFieldsets[] = clone( $submitFieldsetLayout );
 }
 
 // Build the form
@@ -236,7 +235,6 @@ $form->addItems( array(
 	$extDetailsFieldsetLayout,
 	$extDevelopmentFieldsetLayout,
 	$extSpecialPageFieldsetLayout,
-	clone( $submitFieldsetLayout ),
 ) );
 
 // Hooks
@@ -247,3 +245,4 @@ $form->addItems( array(
 	] )
 ) );
 $form->addItems( $hookFieldsets );
+$form->addItems( array( $submitFieldsetLayout ) );
