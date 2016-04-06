@@ -11,8 +11,7 @@
 A web interface to create boilerplate extension for MediaWiki development.
 
 ## Live site
-For an active demo and to use this tool (or to test it) please visit
-http://moriel.smarterthanthat.com/apps/MWStew/
+This tool is running on Wikimedia's Tool Labs at http://tools.wmflabs.org/mwstew/
 
 ## Development
 This tool is fairly stable, but is currently going through QA and testing, and is continously developed. Please report any bugs you encounter!
