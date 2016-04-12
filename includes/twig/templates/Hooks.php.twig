@@ -17,16 +17,16 @@ class {{ name }}Hooks {
 	 * @return true
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
-		$testModules['qunit']['ext.{{ lowerCamelName }}.tests'] = array(
-			'scripts': [
+		$testModules['qunit']['ext.{{ lowerCamelName }}.tests'] = [
+			'scripts' => [
 				'tests/ext.{{ name }}.test.js'
 			],
-			'dependencies': [
+			'dependencies' => [
 				'ext.{{ lowerCamelName }}'
-			]
+			],
 			'localBasePath' => __DIR__ . '/..',
 			'remoteExtPath' => '{{ name }}',
-		);
+		];
 		return true;
 	}
 {% endif %}
