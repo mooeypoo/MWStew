@@ -117,6 +117,7 @@ $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 		// PHP Development
 		new OOUI\FieldLayout(
 			new OOUI\CheckboxInputWidget( array(
+				'infusable' => true,
 				'name' => 'ext_dev_php',
 				'value' => 1,
 			) ),
@@ -129,6 +130,7 @@ $extDevelopmentFieldsetLayout = new OOUI\FieldsetLayout( array(
 		// Javascript Development
 		new OOUI\FieldLayout(
 			new OOUI\CheckboxInputWidget( array(
+				'infusable' => true,
 				'name' => 'ext_dev_js',
 				'value' => 1,
 			) ),
@@ -206,7 +208,6 @@ $submitFieldsetLayout = new OOUI\FieldsetLayout( array(
 ) );
 
 // Extension hooks
-$hooks = json_decode( file_get_contents( 'includes/data/hooks.json' ), true );
 $hookFieldsets = array();
 foreach ( $hooks as $section => $list ) {
 	$hookFields = array();
@@ -242,7 +243,7 @@ $form->addItems( array(
 $form->addItems( array(
 	new OOUI\LabelWidget( [
 		'label' => $msg->text( 'form-section-hooks-label' ),
-		'classes' => array( 'mwstew-ui-form-section' ),
+		'classes' => array( 'mwstew-ui-form-section', 'mwstew-ui-form-section-hooks' ),
 	] )
 ) );
 $form->addItems( $hookFieldsets );

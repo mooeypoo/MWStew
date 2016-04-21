@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Moriel Schottlender"
-		]
+		],
+		"locale": "en"
 	},
 	"html-title": "MWStew: MediaWiki extension boilerplate maker",
 	"page-title": "MWStew",

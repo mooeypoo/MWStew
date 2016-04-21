@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Moriel Schottlender"
-		]
+		],
+		"locale": "he"
 	},
 	"html-title": "MWStew: בונה תוספות למדיהויקי",
 	"page-title": "MWStew",

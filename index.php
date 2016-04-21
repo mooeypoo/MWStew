@@ -12,9 +12,13 @@ $dir = $msg->getDir();
 OOUI\Theme::setSingleton( new OOUI\MediaWikiTheme() );
 OOUI\Element::setDefaultDir( $dir );
 $styles = array(
-	'assets/lib/ooui/oojs-ui-mediawiki' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
+	'node_modules/oojs-ui/dist/oojs-ui-mediawiki' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
 	'assets/MWStew' . ( $dir === 'rtl' ? '.rtl.css' : '.css' )
 );
+
+// Hooks data
+$hooksString = file_get_contents( 'includes/data/hooks.json' );
+$hooks = json_decode( file_get_contents( 'includes/data/hooks.json' ), true );
 
 require_once '_form_structure.php';
 ?>
@@ -25,9 +29,23 @@ require_once '_form_structure.php';
 		<!-- JavaScript -->
 		<script src="assets/lib/jquery-1.12.2.min.js"></script>
 		<script src="assets/lib/oojs.jquery.js"></script>
-		<script src="assets/lib/ooui/oojs-ui.min.js"></script>
-		<script src="assets/lib/ooui/oojs-ui-mediawiki.js"></script>
+		<script src="node_modules/oojs-ui/dist/oojs-ui.min.js"></script>
+		<script src="node_modules/oojs-ui/dist/oojs-ui-mediawiki.js"></script>
+
+		<!-- jQuery.i18n -->
+		<script src="assets/lib/jquery.i18n/src/jquery.i18n.js"></script>
+		<script src="assets/lib/jquery.i18n/src/jquery.i18n.messagestore.js"></script>
+		<script src="assets/lib/jquery.i18n/src/jquery.i18n.language.js"></script>
+
+
 		<script src="assets/MWStew.js"></script>
+		<script type="text/javascript">
+		mwstewData = {
+			hooks: <?php echo $hooksString; ?>,
+			lang: '<?php echo $lang; ?>',
+			dir: '<?php echo $dir; ?>'
+		};
+		</script>
 <?php
 	// Stylesheets
 	for ( $i = 0; $i < count( $styles ); $i++ ) {

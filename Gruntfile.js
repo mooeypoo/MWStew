@@ -60,7 +60,11 @@ module.exports = function ( grunt ) {
 				},
 				dest: 'assets/MWStew.js',
 				src: [
-					'src/js/mwstew.init.js'
+					'src/js/mwstew.js',
+					'src/js/mwstew.init.js',
+					'src/js/widgets/HookItemOptionWidget.js',
+					'src/js/widgets/HooksCapsuleMultiSelectWidget.js',
+					'src/js/widgets/HooksSelectWidget.js'
 				]
 			}
 		}
