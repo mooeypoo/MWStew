@@ -211,7 +211,8 @@ $hookFieldsets = array();
 foreach ( $hooks as $section => $list ) {
 	$hookFields = array();
 	foreach ( $list as $hook => $desc ) {
-		$hookFields[] = new OOUI\FieldLayout(
+		// $hookFields[] = new OOUI\FieldLayout(
+		$hookFields[] = new MWStew\DescriptionFieldLayout(
 			new OOUI\CheckboxInputWidget( array(
 				'name' => 'ext_hooks[]',
 				'value' => $hook,
@@ -219,7 +220,8 @@ foreach ( $hooks as $section => $list ) {
 			array(
 				'label' => $hook,
 				'align' => 'inline',
-				'help' => $desc,
+				'link' => 'https://www.mediawiki.org/wiki/Manual:Hooks/' . $hook,
+				'description' => $desc,
 			)
 		);
 	}
