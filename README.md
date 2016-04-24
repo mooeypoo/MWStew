@@ -30,6 +30,12 @@ If you want to use this tool, make sure to:
 ## Contribute
 This is fully open source tool. It will be hosted so anyone that wants to use it can do so without running the script.
 
+Contributions are extremely appreciated. Here are ways you can help:
+
+* Test the form and add bug reports and/or feature requests to the [issues](https://github.com/mooeypoo/MWStew/issues).
+* Add hooks to the form (there are many to add!) Read about [adding hooks to MWStew!](https://github.com/mooeypoo/MWStew/wiki/Adding-Hooks).
+* Fix bugs or issues and submit pull requests.
+
 Pull requests are welcome! Please participate and help make this a great tool!
 
 ## Authors
