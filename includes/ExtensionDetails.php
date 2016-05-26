@@ -222,7 +222,7 @@ class ExtensionDetails {
 
 			$json[ 'SpecialPages' ][ $this->specialName ] = $this->getSpecialPageClassName();
 
-			$json[ 'AutoloadClasses' ][ $this->getSpecialPageClassName() ] = 'specials/SpecialPage.php';
+			$json[ 'AutoloadClasses' ][ $this->getSpecialPageClassName() ] = 'specials/' . $this->getSpecialPageClassName() . '.php';
 		}
 
 		// Hooks
