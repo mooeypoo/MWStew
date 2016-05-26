@@ -197,10 +197,10 @@ class ExtensionDetails {
 			'license-name' => $this->license,
 			'type' => 'other',
 			'manifest_version' => 1,
-			'MessageDirs' => [],
+			'MessagesDirs' => [],
 			'AutoloadClasses' => [],
 		];
-		$json[ 'MessageDirs' ][ $this->getName() ] = [ 'i18n' ];
+		$json[ 'MessagesDirs' ][ $this->getName() ] = [ 'i18n' ];
 
 		// JavaScript
 		if ( $this->isEnvironment( 'js' ) ) {
