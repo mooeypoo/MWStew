@@ -26,8 +26,8 @@ if ( $details->isEnvironment( 'js' ) ) {
 	$builder->addFile( '.jshintrc', $templating->render( '.jshintrc' ) );
 	$builder->addFile( 'Gruntfile.js', $templating->render( 'Gruntfile.js' ) );
 	$builder->addFile( 'package.json', $templating->render( 'package.json', $params ) );
-	$builder->addFile( 'modules/ext.' . $details->getName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
-	$builder->addFile( 'modules/ext.' . $details->getName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
+	$builder->addFile( 'modules/ext.' . $details->getLowerCamelName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
+	$builder->addFile( 'modules/ext.' . $details->getLowerCamelName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
 
 	// Add unit test file
 	$builder->addFile( 'tests/' . $details->getName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
