@@ -206,11 +206,16 @@ class ExtensionDetails {
 		if ( $this->isEnvironment( 'js' ) ) {
 			$extModule = 'ext.' . $this->getLowerCamelName();
 
-			$json[ $extModule ] = [
-				'scripts' => [ 'modules/' . $extModule . '.js' ],
-				'styles' => [ 'modules/' . $extModule . '.css' ],
+			$json[ 'ResourceModules' ][ $extModule ] = [
+				'scripts' => [ $extModule . '.js' ],
+				'styles' => [ $extModule . '.css' ],
 				'messages' => [],
 				'dependencies' => [],
+			];
+
+			$json[ 'ResourceFileModulePaths' ] = [
+				'localBasePath' => 'modules',
+				'remoteExtPath' =>  $this->getName() . '/modules',
 			];
 		}
 
