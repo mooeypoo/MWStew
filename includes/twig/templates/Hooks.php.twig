@@ -19,7 +19,7 @@ class {{ name }}Hooks {
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
 		$testModules['qunit']['ext.{{ lowerCamelName }}.tests'] = [
 			'scripts' => [
-				'tests/ext.{{ name }}.test.js'
+				'tests/{{ name }}.test.js'
 			],
 			'dependencies' => [
 				'ext.{{ lowerCamelName }}'
