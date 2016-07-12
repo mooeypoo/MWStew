@@ -9,16 +9,14 @@
     "url": "https://github.com/mooeypoo/MWStew"
   },
   "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-cli": "0.1.13",
-    "grunt-contrib-csslint": "1.0.0",
-    "grunt-contrib-less": "*",
-    "grunt-cssjanus": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-jshint": "1.0.0",
+    "grunt": "1.0.1",
     "grunt-banana-checker": "0.5.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-csslint": "1.0.0",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-less": "1.3.0",
+    "grunt-cssjanus": "*",
     "grunt-jscs": "2.8.0",
-    "grunt-contrib-concat": "1.0.0",
     "oojs-ui": "*"
   }
 }
