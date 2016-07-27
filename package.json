@@ -1,7 +1,7 @@
 {
   "name": "MWStew",
   "author": "Moriel Schottlender",
-  "license": "GPLv2.0",
+  "license": "GPL-2.0",
   "version": "1.0.0",
   "description": "A boilerplate maker for MediaWiki extensions",
   "repository": {
