@@ -11,7 +11,12 @@ class ExtensionDetails {
 	protected $version = '0.0.0';
 	protected $desc = '';
 	protected $url = '';
-	protected $license;
+	protected $license = '';
+
+	/**
+	 * Licenses we know about
+	 */
+	const KNOWN_LICENSES = [ 'GPL-2.0+', 'MIT', 'Apache-2.0' ];
 
 	protected $devEnvironment = array();
 
@@ -77,7 +82,13 @@ class ExtensionDetails {
 	}
 
 	public function setLicense( $license ) {
-		$this->license = $license;
+		if ( in_array( $license, self::KNOWN_LICENSES ) ) {
+			$this->license = $license;
+		}
+	}
+
+	public function getLicense() {
+		return $this->license;
 	}
 
 	public function setDevEnv( $isPhp, $isJs ) {
