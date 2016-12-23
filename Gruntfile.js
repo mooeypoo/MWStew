@@ -1,11 +1,11 @@
-/*jshint node:true */
+/* eslint-env node */
+
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
 	grunt.loadNpmTasks( 'grunt-cssjanus' );
-	grunt.loadNpmTasks( 'grunt-jscs' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
@@ -40,19 +40,11 @@ module.exports = function ( grunt ) {
 		banana: {
 			all: 'i18n/'
 		},
-		jshint: {
-			options: {
-				jshintrc: true
-			},
+		eslint: {
 			all: [
 				'*.js',
 				'src/**/*.js',
 				'!node_modules/**'
-			]
-		},
-		jscs: {
-			src: [
-				'<%= jshint.all %>'
 			]
 		},
 		concat: {
@@ -69,6 +61,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'default', [ 'lint', 'build' ] );
-	grunt.registerTask( 'lint', [ 'stylelint', 'banana', 'jshint', 'jscs' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'build', [ 'less', 'cssjanus', 'concat' ] );
 };
