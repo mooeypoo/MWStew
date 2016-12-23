@@ -18,6 +18,7 @@
     "grunt-contrib-jshint": "1.0.0",
     "grunt-banana-checker": "0.5.0",
     "grunt-jscs": "2.8.0",
-    "grunt-contrib-concat": "1.0.0"
+    "grunt-contrib-concat": "1.0.0",
+    "oojs-ui": "*"
   }
 }

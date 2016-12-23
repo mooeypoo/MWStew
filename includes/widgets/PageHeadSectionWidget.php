@@ -8,6 +8,7 @@ class PageHeadSectionWidget extends \OOUI\Widget {
 		parent::__construct( $config );
 
 		$langSelector = new \OOUI\DropdownInputWidget( array(
+			'infusable' => true,
 			'name' => 'lang',
 			'options' => [
 				array( 'data' => 'en', 'label' => 'English' ),
