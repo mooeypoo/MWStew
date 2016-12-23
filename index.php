@@ -12,7 +12,7 @@ $dir = $msg->getDir();
 OOUI\Theme::setSingleton( new OOUI\MediaWikiTheme() );
 OOUI\Element::setDefaultDir( $dir );
 $styles = array(
-	'assets/lib/ooui/oojs-ui-mediawiki' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
+	'node_modules/oojs-ui/dist/oojs-ui-mediawiki' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
 	'assets/MWStew' . ( $dir === 'rtl' ? '.rtl.css' : '.css' )
 );
 
@@ -23,10 +23,10 @@ require_once '_form_structure.php';
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title><?php echo $msg->text( 'html-title' ); ?></title>
 		<!-- JavaScript -->
-		<script src="assets/lib/jquery-1.12.2.min.js"></script>
-		<script src="assets/lib/oojs.jquery.js"></script>
-		<script src="assets/lib/ooui/oojs-ui.min.js"></script>
-		<script src="assets/lib/ooui/oojs-ui-mediawiki.js"></script>
+		<script src="node_modules/oojs-ui/node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="node_modules/oojs-ui/node_modules/oojs/dist/oojs.jquery.min.js"></script>
+		<script src="node_modules/oojs-ui/dist/oojs-ui.min.js"></script>
+		<script src="node_modules/oojs-ui/dist/oojs-ui-mediawiki.min.js"></script>
 		<script src="assets/MWStew.js"></script>
 <?php
 	// Stylesheets
