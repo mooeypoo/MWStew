@@ -22,6 +22,7 @@ $params = $details->getAllParams();
 // JS Development files
 if ( $details->isEnvironment( 'js' ) ) {
 	$builder->addFile( '.eslintrc.json', $templating->render( '.eslintrc.json' ) );
+	$builder->addFile( '.stylelintrc', $templating->render( '.stylelintrc' ) );
 	$builder->addFile( 'Gruntfile.js', $templating->render( 'Gruntfile.js' ) );
 	$builder->addFile( 'package.json', $templating->render( 'package.json', $params ) );
 	$builder->addFile( 'modules/ext.' . $details->getLowerCamelName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
