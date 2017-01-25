@@ -1,12 +1,12 @@
-/*jshint node:true */
+/* eslint-env node */
+
 module.exports = function ( grunt ) {
-	grunt.loadNpmTasks( 'grunt-contrib-less' );
-	grunt.loadNpmTasks( 'grunt-contrib-csslint' );
-	grunt.loadNpmTasks( 'grunt-cssjanus' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-jscs' );
 	grunt.loadNpmTasks( 'grunt-contrib-concat' );
+	grunt.loadNpmTasks( 'grunt-contrib-less' );
+	grunt.loadNpmTasks( 'grunt-cssjanus' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -17,13 +17,15 @@ module.exports = function ( grunt ) {
 				}
 			}
 		},
-		csslint: {
-			options: {
-				csslintrc: '.csslintrc'
-			},
-			site: [
-				'assets/MWStew.css'
-			]
+		stylelint: {
+			site: {
+				options: {
+					syntax: 'less'
+				},
+				src: [
+					'src/less/**/*.less'
+				]
+			}
 		},
 		cssjanus: {
 			options: {
@@ -38,19 +40,11 @@ module.exports = function ( grunt ) {
 		banana: {
 			all: 'i18n/'
 		},
-		jshint: {
-			options: {
-				jshintrc: true
-			},
+		eslint: {
 			all: [
 				'*.js',
 				'src/**/*.js',
 				'!node_modules/**'
-			]
-		},
-		jscs: {
-			src: [
-				'<%= jshint.all %>'
 			]
 		},
 		concat: {
@@ -67,6 +61,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'default', [ 'lint', 'build' ] );
-	grunt.registerTask( 'lint', [ 'csslint', 'banana', 'jshint', 'jscs' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'build', [ 'less', 'cssjanus', 'concat' ] );
 };

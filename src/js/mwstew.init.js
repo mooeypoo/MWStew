@@ -4,4 +4,4 @@
 			OO.ui.infuse( this.id );
 		} );
 	} );
-} )( jQuery );
+}( jQuery ) );
