@@ -12,7 +12,7 @@ $dir = $msg->getDir();
 OOUI\Theme::setSingleton( new OOUI\WikimediaUITheme() );
 OOUI\Element::setDefaultDir( $dir );
 $styles = array(
-	'node_modules/oojs-ui/dist/oojs-ui-wikimediaui.min' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
+	'node_modules/oojs-ui/dist/oojs-ui-wikimediaui' . ( $dir === 'rtl' ? '.rtl.min.css' : '.min.css' ),
 	'assets/MWStew' . ( $dir === 'rtl' ? '.rtl.css' : '.css' )
 );
 
