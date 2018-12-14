@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* eslint-env node, es6 */
 
 module.exports = function ( grunt ) {
 	var conf = grunt.file.readJSON( 'extension.json' );
@@ -9,6 +9,9 @@ module.exports = function ( grunt ) {
 
 	grunt.initConfig( {
 		eslint: {
+			options: {
+				reportUnusedDisableDirectives: true
+			},
 			all: [
 				'*.js',
 				'modules/**/*.js'
@@ -16,7 +19,7 @@ module.exports = function ( grunt ) {
 		},
 		stylelint: {
 			options: {
-				syntax: 'less',
+				syntax: 'less'
 			},
 			all: [
 				'*.{css,less}',

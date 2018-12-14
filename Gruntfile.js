@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* eslint-env node, es6 */
 
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
@@ -41,6 +41,9 @@ module.exports = function ( grunt ) {
 			all: 'i18n/'
 		},
 		eslint: {
+			options: {
+				reportUnusedDisableDirectives: true
+			},
 			all: [
 				'*.js',
 				'src/**/*.js',
