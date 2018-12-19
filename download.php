@@ -30,6 +30,7 @@ if ( $details->isEnvironment( 'js' ) ) {
 
 	// Add unit test file
 	$builder->addFile( 'tests/' . $details->getName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
+	$builder->addFile( 'tests/.eslintrc.json', $templating->render( 'tests/.eslintrc.json' ) );
 }
 
 // PHP Development files
