@@ -1,0 +1,43 @@
+body {
+  padding-bottom: 3em;
+  direction: rtl;
+}
+.mwstew-ui-form .container {
+  max-width: 750px;
+}
+.lh-condensed {
+  line-height: 1.25;
+}
+.mwstew-ui-language {
+  width: 12em;
+  padding-top: 1em;
+  margin-right: auto;
+  margin-left: auto;
+}
+.mwstew-ui-floating-button {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 1em 0.5em;
+  background: #f8f9fa !important;
+  -webkit-box-shadow: 0px -1px 25px -5px #6b6b6b;
+  -moz-box-shadow: 0px -1px 25px -5px #6b6b6b;
+  box-shadow: 0px -1px 25px -5px #6b6b6b;
+}
+.mwstew-ui-floating-button .btn {
+  max-width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.mwstew-ui-summary {
+  background: #fff;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0px 0px 5px 0px #6b6b6b;
+}
+/* @noflip */
+#ext_license,
+#ext_url,
+#ext_name {
+  direction: ltr;
+}

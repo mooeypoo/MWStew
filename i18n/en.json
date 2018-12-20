@@ -8,6 +8,7 @@
 	"page-title": "MWStew",
 	"page-subtitle": "MediaWiki extension boilerplate maker",
 	"lang-selector-submit": "Select",
+	"form-required-field": "Required field",
 	"form-section-general-label": "General details",
 	"form-section-devenv-label": "Development environment",
 	"form-section-specialpage-label": "Special page",

@@ -7,6 +7,7 @@
 	"html-title": "Page title for MWStew that appears on the browser window.",
 	"page-title": "Title for the MWStew site",
 	"page-subtitle": "Subtitle for the MWStew site",
+	"form-required-field": "A label marking a form field as required",
 	"lang-selector-submit": "Label for the button in the language selector form",
 	"form-section-general-label": "Label for the general details section of the form",
 	"form-section-devenv-label": "Label for the development environment section of the form",
