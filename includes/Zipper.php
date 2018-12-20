@@ -26,7 +26,7 @@ class Zipper {
 	 * 	'filename.php' => 'Content of the file',
 	 *	'folder/filename2.txt' => 'Content of the file',
 	 * }
-	 * @param Object $fileStructure Structure and content of the files
+	 * @param array $fileStructure Structure and content of the files
 	 */
 	public function addFilesToZip( $fileStructure ) {
 		foreach ( $fileStructure as $dir => $content ) {

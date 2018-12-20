@@ -60,6 +60,11 @@ if ( $details->isEnvironment( 'js' ) || count( $details->getHooks() ) > 0 ) {
 // Extension file
 $builder->addFile( 'extension.json', $details->getExtensionJson( true ) );
 
+$license = $details->getLicense();
+if ( $license ) {
+	$builder->addFile( 'COPYING', $templating->render( "$license.txt" ) );
+}
+
 // Language file
 $builder->addFile( 'i18n/en.json', $details->getLangFileJson( 'lang' ) );
 $builder->addFile( 'i18n/qqq.json', $details->getLangFileJson( 'doc' ) );
