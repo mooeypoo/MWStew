@@ -1,11 +1,10 @@
 {
 	"require": {
-		"oojs/oojs-ui": "*",
-		"twig/twig": "~1.0",
+		"twig/twig": "^1.0",
 		"respect/validation": "^1.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "*"
+		"phpunit/phpunit": "^4.8"
 	},
 	"autoload": {
 		"classmap": [ "includes" ]
