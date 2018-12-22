@@ -2,7 +2,3 @@ vendor/
 node_modules/
 includes/twig/cache/*
 !includes/twig/cache/.gitkeep
-composer.lock
-assets/MWStew.css
-assets/MWStew.rtl.css
-assets/MWStew.js

@@ -1,3 +1,12 @@
+/*!
+ * MWStew v1.0.0
+ * https://www.github.com/mooeypoo/MWStew
+ *
+ * Released under the GPLv2.0 license
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ *
+ * Date: 2018-12-22T07:37:50Z
+ */
 $( function () {
   var $fields = $( '.container' ).find( 'input, select, textarea' ),
     $button = $( '.mwstew-ui-floating-button button' ),

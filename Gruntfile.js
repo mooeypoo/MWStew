@@ -33,7 +33,8 @@ module.exports = function ( grunt ) {
 			},
 			site: {
 				files: {
-					'assets/MWStew.rtl.css': 'assets/MWStew.css'
+					'assets/MWStew.rtl.css': 'assets/MWStew.css',
+					'assets/bootstrap.rtl.css': 'assets/bootstrap.min.css'
 				}
 			}
 		},
