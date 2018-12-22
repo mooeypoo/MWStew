@@ -16,7 +16,7 @@ class ExtensionDetails {
 	/**
 	 * Licenses we know about
 	 */
-	const KNOWN_LICENSES = [ 'GPL-2.0+', 'MIT', 'Apache-2.0' ];
+	protected $knownLicenses = [ 'GPL-2.0+', 'MIT', 'Apache-2.0' ];
 
 	protected $devEnvironment = array();
 
@@ -82,7 +82,7 @@ class ExtensionDetails {
 	}
 
 	public function setLicense( $license ) {
-		if ( in_array( $license, self::KNOWN_LICENSES ) ) {
+		if ( in_array( $license, $this->knownLicenses ) ) {
 			$this->license = $license;
 		}
 	}
