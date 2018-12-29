@@ -1,5 +1,15 @@
 {
-	"name": "mwstew",
+	"name": "mooeypoo/mwstew",
+	"description": "The graphical interface of MWStew system to create MediaWiki extension files.",
+	"license": "GPL-2.0-or-later",
+    "authors": [
+      {
+        "name": "Moriel Schottlender",
+        "email": "mooeypoo@gmail.com",
+        "homepage": "http://moriel.smarterthanthat.com",
+        "role": "Developer"
+      }
+    ],
 	"require": {
 		"mooeypoo/mwstew-builder": "^0.9"
 	},
