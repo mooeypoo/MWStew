@@ -98,7 +98,6 @@ $styles = array(
           'type' => 'text'
         ],
         'ext_author' => [
-          'required' => true,
           'label' => $msg->text( 'form-general-field-author-label' ),
           'placeholder' => $msg->text( 'form-general-field-author-placeholder' ),
           'type' => 'text'
