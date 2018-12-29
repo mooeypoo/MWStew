@@ -1,12 +1,12 @@
 <?php
-require_once 'bootstrap.php';
+require_once './vendor/autoload.php';
 
 // TODO: Add more translations and add some input to choose
 // a language to display
 $lang = isset( $_GET[ 'lang' ] ) ? $_GET[ 'lang' ] : 'en';
 
 // Message
-$msg = new MWStew\Message( $lang );
+$msg = new MWStew\UI\Message( $lang );
 $dir = $msg->getDir();
 $styles = array(
 	// 'node_modules/oojs-ui/dist/oojs-ui-wikimediaui' . ( $dir === 'rtl' ? '.rtl.min.css' : '.min.css' ),

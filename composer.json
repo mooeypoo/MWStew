@@ -1,12 +1,9 @@
 {
+	"name": "mwstew",
 	"require": {
-		"twig/twig": "^1.0",
-		"respect/validation": "^1.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^4.8"
+		"mooeypoo/mwstew-builder": "^0.9"
 	},
 	"autoload": {
-		"classmap": [ "includes" ]
-	}
+        "psr-4": { "MWStew\\UI\\": "includes/" }
+    }
 }

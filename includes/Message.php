@@ -1,6 +1,6 @@
 <?php
 
-namespace MWStew;
+namespace MWStew\UI;
 
 /**
  * A very simple and raw class to create translations by key: message
@@ -63,7 +63,7 @@ class Message {
 		$this->data[ $lang ] = [];
 
 		// Load language file
-		$filename = BASE_PATH . '/i18n/' . $lang . '.json';
+		$filename = dirname( __DIR__ ) . '/i18n/' . $lang . '.json';
 		if ( !file_exists( $filename ) ) {
 			return;
 		}

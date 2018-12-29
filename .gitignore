@@ -1,4 +1,5 @@
 vendor/
 node_modules/
-includes/twig/cache/*
-!includes/twig/cache/.gitkeep
+cache/*
+!cache/.gitkeep
+composer.lock

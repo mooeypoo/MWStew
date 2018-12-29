@@ -1,75 +1,47 @@
 <?php
-require_once 'bootstrap.php';
-include_once( 'includes/Zipper.php' );
+require_once './vendor/autoload.php';
 
-// Helpers
-$sanitizer = new MWStew\Sanitizer( $_POST );
-if ( !$sanitizer) {
-	// Validation failed
-	var_dump( $sanitizer->getErrors() );
+function getValueIfExists( $val ) {
+	if ( isset( $_POST[$val] ) ) {
+		return $_POST[$val];
+	}
+	return null;
+}
+
+$extName = getValueIfExists( 'ext_name' );
+$data = [
+	'name' => $extName,
+	'author' => getValueIfExists( 'ext_author' ),
+	'title' => getValueIfExists( 'ext_display_name' ),
+	'description' => getValueIfExists( 'ext_description' ),
+	'version' => getValueIfExists( 'ext_version' ),
+	'url' => getValueIfExists( 'ext_url' ),
+	'license' => getValueIfExists( 'ext_license' ),
+	'specialpage_name' => getValueIfExists( 'ext_specialpage_name' ),
+	'specialpage_title' => getValueIfExists( 'ext_specialpage_title' ),
+	'specialpage_intro' => getValueIfExists( 'ext_specialpage_intro' ),
+];
+
+if ( getValueIfExists( 'ext_dev_js' ) ) {
+	$data['dev_js'] = '1';
+}
+if ( getValueIfExists( 'ext_dev_php' ) ) {
+	$data['dev_php'] = '1';
+}
+
+// Build extension files
+try {
+	$generator = new MWStew\Builder\Generator( $data, [ 'cacheDir' => './cache' ] );
+} catch ( Exception $e ) {
+	// TODO: Display a proper error page!
+	echo json_encode( [
+		'status' => 'error',
+		'errors' => $e->getMessage()
+	] );
 	return;
 }
 
-$templating = new MWStew\Templating();
-$details = new MWStew\ExtensionDetails( $sanitizer->getRawParams() );
-$builder = new MWStew\Builder();
-
-/* Get sanitized parameters */
-$params = $details->getAllParams();
-
-/* Build the extension zip file */
-
-// JS Development files
-if ( $details->isEnvironment( 'js' ) ) {
-	$builder->addFile( '.eslintrc.json', $templating->render( '.eslintrc.json' ) );
-	$builder->addFile( '.stylelintrc', $templating->render( '.stylelintrc' ) );
-	$builder->addFile( 'Gruntfile.js', $templating->render( 'Gruntfile.js' ) );
-	$builder->addFile( 'package.json', $templating->render( 'package.json', $params ) );
-	$builder->addFile( 'modules/ext.' . $details->getLowerCamelName() . '.js', $templating->render( 'modules/ext.extension.js', $params ) );
-	$builder->addFile( 'modules/ext.' . $details->getLowerCamelName() . '.css', $templating->render( 'modules/ext.extension.css', $params ) );
-
-	// Add unit test file
-	$builder->addFile( 'tests/' . $details->getName() . '.test.js', $templating->render( 'tests/qunit.js', $params ) );
-	$builder->addFile( 'tests/.eslintrc.json', $templating->render( 'tests/.eslintrc.json' ) );
-}
-
-// PHP Development files
-if ( $details->isEnvironment( 'php' ) ) {
-	$builder->addFile( 'composer.json', $templating->render( 'composer.json' ) );
-
-	// Add unit test file
-	$builder->addFile( 'tests/' . $details->getName() . '.test.php', $templating->render( 'tests/phpunit.php', $params ) );
-}
-
-// Special page
-// TODO: Allow for more than one special page
-if ( $details->hasSpecialPage() ) {
-	// Special page
-	$builder->addFile(
-		'specials/' . $details->getSpecialPageClassName() . '.php',
-		$templating->render( 'specials/SpecialPage.php', $params )
-	);
-	$builder->addFile( $details->getName() . '.alias.php', $templating->render( 'extension.alias.php', $params ) );
-}
-
-// Hooks
-if ( $details->isEnvironment( 'js' ) || count( $details->getHooks() ) > 0 ) {
-	$builder->addFile( 'Hooks.php', $templating->render( 'Hooks.php', $params ) );
-}
-
-// Extension file
-$builder->addFile( 'extension.json', $details->getExtensionJson( true ) );
-
-$license = $details->getLicense();
-if ( $license ) {
-	$builder->addFile( 'COPYING', $templating->render( "$license.txt" ) );
-}
-
-// Language file
-$builder->addFile( 'i18n/en.json', $details->getLangFileJson( 'lang' ) );
-$builder->addFile( 'i18n/qqq.json', $details->getLangFileJson( 'doc' ) );
-
 // Send to download
-$zip = new MWStew\Zipper( BASE_PATH . '/temp/', $details->getName() );
-$zip->addFilesToZip( $builder->getFiles() );
+$zip = new MWStew\Builder\Zipper( __DIR__ . '/temp/', $extName );
+$zip->addFilesToZip( $generator->getFiles() );
 $zip->download();
