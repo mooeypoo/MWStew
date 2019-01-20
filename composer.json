@@ -11,7 +11,7 @@
       }
     ],
 	"require": {
-		"mooeypoo/mwstew-builder": "^0.9"
+		"mooeypoo/mwstew-builder": "^1.0"
 	},
 	"autoload": {
         "psr-4": { "MWStew\\UI\\": "includes/" }
