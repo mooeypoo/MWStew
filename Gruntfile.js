@@ -19,9 +19,6 @@ module.exports = function ( grunt ) {
 		},
 		stylelint: {
 			site: {
-				options: {
-					syntax: 'less'
-				},
 				src: [
 					'src/less/**/*.less'
 				]

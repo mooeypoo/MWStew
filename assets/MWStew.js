@@ -5,7 +5,7 @@
  * Released under the GPLv2.0 license
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *
- * Date: 2019-10-03T13:17:03Z
+ * Date: 2019-10-03T13:22:52Z
  */
 $( function () {
 	// eslint-disable-next-line no-jquery/no-global-selector
