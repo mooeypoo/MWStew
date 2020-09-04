@@ -58,6 +58,9 @@ class Message {
 		}
 	}
 
+	/**
+	 * @param string $lang Langage code
+	 */
 	private function loadLangFile( $lang ) {
 		// Initialize
 		$this->data[ $lang ] = [];
@@ -103,7 +106,6 @@ class Message {
 		return htmlspecialchars( $msg );
 	}
 
-
 	/**
 	 * Output html
 	 *
@@ -118,8 +120,10 @@ class Message {
 
 	/**
 	 * Parse and replace
-	 * @param [type] $key [description]
-	 * @return [type] [description]
+	 *
+	 * @param string $key
+	 * @param array $params
+	 * @return string
 	 */
 	protected function parseKeyParams( $key, $params ) {
 		$msg = $this->getRawMessageByKey( $key, $this->lang );
@@ -135,8 +139,14 @@ class Message {
 		return $msg;
 	}
 
+	/**
+	 * Parse and replace
+	 *
+	 * @param string $key
+	 * @param string $lang
+	 * @return string
+	 */
 	protected function getRawMessageByKey( $key, $lang = 'en' ) {
-
 		if ( !$this->keyExists( $key, $this->lang ) ) {
 			// Key doesn't exist, see if it exists in
 			// the fallback English
@@ -150,6 +160,13 @@ class Message {
 		}
 	}
 
+	/**
+	 * Parse and replace
+	 *
+	 * @param string $key
+	 * @param string $lang
+	 * @return bool
+	 */
 	protected function keyExists( $key, $lang = 'en' ) {
 		return isset( $this->data[ $lang ][ $key ] );
 	}

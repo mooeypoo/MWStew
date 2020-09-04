@@ -33,7 +33,7 @@ $styles = [
 		<?php
 			// Stylesheets
 			for ( $i = 0; $i < count( $styles ); $i++ ) {
-				echo '<link rel="stylesheet" href="' . $styles[$i] . '">'."\n";
+				echo '<link rel="stylesheet" href="' . $styles[$i] . '">' . "\n";
 			}
 		?>
 	</head>
@@ -186,7 +186,7 @@ if ( $itemData['type'] === 'text' ) {
 					<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
 				>
 <?php
-} else if ( $itemData['type'] === 'select' ) {
+} elseif ( $itemData['type'] === 'select' ) {
 ?>
 			<label for="<?php echo $itemName; ?>">
 				<?php echo $itemData[ 'label' ]; ?>
@@ -205,7 +205,7 @@ if ( $itemData['type'] === 'text' ) {
 ?>
 			</select>
 <?php
-} else if ( $itemData['type'] === 'checkbox' ) {
+} elseif ( $itemData['type'] === 'checkbox' ) {
 ?>
 			<div class="custom-control custom-checkbox">
 				<input
@@ -222,7 +222,7 @@ if ( $itemData['type'] === 'text' ) {
 				</label>
 			</div>
 <?php
-} else if ( $itemData['type'] === 'prefixed-text' ) {
+} elseif ( $itemData['type'] === 'prefixed-text' ) {
 ?>
 			<label class="sr-only" for="<?php echo $itemName; ?>">
 				<?php echo $itemData[ 'label' ]; ?>
@@ -242,7 +242,7 @@ if ( $itemData['type'] === 'text' ) {
 				>
 			</div>
 <?php
-} else if ( $itemData['type'] === 'textarea' ) {
+} elseif ( $itemData['type'] === 'textarea' ) {
 ?>
 	<div class="form-group">
 		<label for="<?php echo $itemName; ?>">
