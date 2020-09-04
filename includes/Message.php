@@ -23,13 +23,13 @@ class Message {
 	 * The translation data
 	 * @var array
 	 */
-	protected $data = array();
+	protected $data = [];
 
 	/**
 	 * An array of RTL languages
 	 * @var array
 	 */
-	protected $rtlLangs = array( 'he', 'ar', 'fa', 'ur', 'yi', 'ji' );
+	protected $rtlLangs = [ 'he', 'ar', 'fa', 'ur', 'yi', 'ji' ];
 
 	/**
 	 * Construct the message object according to the given language
@@ -93,16 +93,11 @@ class Message {
 	 * Output text (do not parse html)
 	 *
 	 * @param string $key Message key
-	 * @param Mixed... Parameters to replace in the message
+	 * @param Mixed $params,... Parameters to replace in the message
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function text( $key /* $param1, $param2, $param3 ... */) {
-		// Parse parameters
-		$params = func_get_args();
-		// First value is the $key, so get rid of it
-		array_shift( $params );
-
+	public function text( $key, ...$params ) {
 		$msg = $this->parseKeyParams( $key, $params );
 		// Unparse html
 		return htmlspecialchars( $msg );
@@ -113,16 +108,11 @@ class Message {
 	 * Output html
 	 *
 	 * @param string $key Message key
-	 * @param Mixed... Parameters to replace in the message
+	 * @param Mixed $params,... Parameters to replace in the message
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function html( $key /* $param1, $param2, $param3 ... */) {
-		// Parse parameters
-		$params = func_get_args();
-		// First value is the $key, so get rid of it
-		array_shift( $params );
-
+	public function html( $key, ...$params ) {
 		return $this->parseKeyParams( $key, $params );
 	}
 

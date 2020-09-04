@@ -8,11 +8,11 @@ $lang = isset( $_GET[ 'lang' ] ) ? $_GET[ 'lang' ] : 'en';
 // Message
 $msg = new MWStew\UI\Message( $lang );
 $dir = $msg->getDir();
-$styles = array(
+$styles = [
 	// 'node_modules/oojs-ui/dist/oojs-ui-wikimediaui' . ( $dir === 'rtl' ? '.rtl.min.css' : '.min.css' ),
 	'assets/MWStew' . ( $dir === 'rtl' ? '.rtl.css' : '.css' ),
 	'assets/bootstrap' . ( $dir === 'rtl' ? '.rtl.css' : '.min.css' ),
-);
+];
 
 // require_once '_form_structure.php';
 ?>
