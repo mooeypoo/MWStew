@@ -1,11 +1,18 @@
-language: php
+matrix:
+  include:
+    - language: php
+      php: 7.4
 
-php: 7.4
+      before_script:
+        - composer self-update
+        - composer install --prefer-source --no-interaction
 
-before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction
+      script:
+        - composer validate
+        - composer test
 
-script:
-  - composer validate
-  - composer test
+    - language: node_js
+      node_js: 14
+
+      script:
+        - npm test
