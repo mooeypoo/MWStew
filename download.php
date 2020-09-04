@@ -1,9 +1,9 @@
 <?php
 require_once './vendor/autoload.php';
 
-function getValueIfExists( $val ) {
-	if ( isset( $_POST[$val] ) ) {
-		return $_POST[$val];
+function getValueIfExists( string $key ) : ?string {
+	if ( isset( $_POST[$key] ) ) {
+		return $_POST[$key];
 	}
 	return null;
 }

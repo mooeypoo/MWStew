@@ -175,28 +175,28 @@ if ( $itemData['type'] === 'text' ) {
 ?>
 				<label for="<?php echo $itemName; ?>">
 					<?php echo $itemData[ 'label' ]; ?>
-					<?php echo $itemData[ 'required' ] ? $requiredSpan : '' ?>
+					<?php echo !empty( $itemData[ 'required' ] ) ? $requiredSpan : '' ?>
 				</label>
 				<input
 					type="text"
 					class="form-control"
 					id="<?php echo $itemName; ?>"
 					name="<?php echo $itemName; ?>"
-					placeholder="<?php echo $itemData[ 'placeholder' ]; ?>"
-					<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
+					placeholder="<?php echo $itemData[ 'placeholder' ] ?? ''; ?>"
+					<?php echo !empty( $itemData[ 'required' ] ) ? 'required' : '' ?>
 				>
 <?php
 } elseif ( $itemData['type'] === 'select' ) {
 ?>
 			<label for="<?php echo $itemName; ?>">
 				<?php echo $itemData[ 'label' ]; ?>
-				<?php echo $itemData[ 'required' ] ? $requiredSpan : '' ?>
+				<?php echo !empty( $itemData[ 'required' ] ) ? $requiredSpan : '' ?>
 			</label>
 			<select
 				class="form-control"
 				id="<?php echo $itemName; ?>"
 				name="<?php echo $itemName; ?>"
-				<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
+				<?php echo !empty( $itemData[ 'required' ] ) ? 'required' : '' ?>
 			>
 <?php
 			foreach ( $itemData[ 'options' ] as $opt ) {
@@ -214,11 +214,11 @@ if ( $itemData['type'] === 'text' ) {
 					id="<?php echo $itemName; ?>"
 					name="<?php echo $itemName; ?>"
 					value="1"
-					<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
+					<?php echo !empty( $itemData[ 'required' ] ) ? 'required' : '' ?>
 				>
 				<label class="custom-control-label" for="<?php echo $itemName; ?>">
 					<?php echo $itemData[ 'label' ]; ?>
-					<?php echo $itemData[ 'required' ] ? $requiredSpan : '' ?>
+					<?php echo !empty( $itemData[ 'required' ] ) ? $requiredSpan : '' ?>
 				</label>
 			</div>
 <?php
@@ -226,7 +226,7 @@ if ( $itemData['type'] === 'text' ) {
 ?>
 			<label class="sr-only" for="<?php echo $itemName; ?>">
 				<?php echo $itemData[ 'label' ]; ?>
-				<?php echo $itemData[ 'required' ] ? $requiredSpan : '' ?>
+				<?php echo !empty( $itemData[ 'required' ] ) ? $requiredSpan : '' ?>
 			</label>
 			<div class="input-group mb-2">
 				<div class="input-group-prepend">
@@ -237,8 +237,8 @@ if ( $itemData['type'] === 'text' ) {
 					class="form-control"
 					id="<?php echo $itemName; ?>"
 					name="<?php echo $itemName; ?>"
-					placeholder="<?php echo $itemData[ 'placeholder' ]; ?>"
-					<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
+					placeholder="<?php echo $itemData[ 'placeholder' ] ?? ''; ?>"
+					<?php echo !empty( $itemData[ 'required' ] ) ? 'required' : '' ?>
 				>
 			</div>
 <?php
@@ -247,15 +247,15 @@ if ( $itemData['type'] === 'text' ) {
 	<div class="form-group">
 		<label for="<?php echo $itemName; ?>">
 			<?php echo $itemData[ 'label' ]; ?>
-			<?php echo $itemData[ 'required' ] ? $requiredSpan : '' ?>
+			<?php echo !empty( $itemData[ 'required' ] ) ? $requiredSpan : '' ?>
 		</label>
 		<textarea
 			class="form-control"
 			id="<?php echo $itemName; ?>"
 			name="<?php echo $itemName; ?>"
-			placeholder="<?php echo $itemData[ 'placeholder' ]; ?>"
+			placeholder="<?php echo $itemData[ 'placeholder' ] ?? ''; ?>"
 			rows="3"
-			<?php echo $itemData[ 'required' ] ? 'required' : '' ?>
+			<?php echo !empty( $itemData[ 'required' ] ) ? 'required' : '' ?>
 		></textarea>
 	</div>
 <?php

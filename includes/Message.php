@@ -40,7 +40,7 @@ class Message {
 	 * @param string $forceLangDir Forced language directionality.
 	 *  If given, it will override any default direction.
 	 */
-	public function __construct( $langCode = 'en', $forceLangDir = '' ) {
+	public function __construct( string $langCode = 'en', string $forceLangDir = '' ) {
 		$this->lang = $langCode ? $langCode : 'en';
 
 		// Get direction
@@ -61,7 +61,7 @@ class Message {
 	/**
 	 * @param string $lang Langage code
 	 */
-	private function loadLangFile( $lang ) {
+	private function loadLangFile( string $lang ) {
 		// Initialize
 		$this->data[ $lang ] = [];
 
@@ -88,7 +88,7 @@ class Message {
 	 *
 	 * @return string Direcitonality 'rtl' or 'ltr'
 	 */
-	public function getDir() {
+	public function getDir() : string {
 		return $this->dir;
 	}
 
@@ -100,7 +100,7 @@ class Message {
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function text( $key, ...$params ) {
+	public function text( string $key, ...$params ) : string {
 		$msg = $this->parseKeyParams( $key, $params );
 		// Unparse html
 		return htmlspecialchars( $msg );
@@ -114,7 +114,7 @@ class Message {
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function html( $key, ...$params ) {
+	public function html( string $key, ...$params ) : string {
 		return $this->parseKeyParams( $key, $params );
 	}
 
@@ -125,7 +125,7 @@ class Message {
 	 * @param array $params
 	 * @return string
 	 */
-	protected function parseKeyParams( $key, $params ) {
+	protected function parseKeyParams( string $key, array $params ) : string {
 		$msg = $this->getRawMessageByKey( $key, $this->lang );
 
 		if ( !$msg ) {
@@ -146,7 +146,7 @@ class Message {
 	 * @param string $lang
 	 * @return string
 	 */
-	protected function getRawMessageByKey( $key, $lang = 'en' ) {
+	protected function getRawMessageByKey( string $key, string $lang = 'en' ) : string {
 		if ( !$this->keyExists( $key, $this->lang ) ) {
 			// Key doesn't exist, see if it exists in
 			// the fallback English
@@ -167,7 +167,7 @@ class Message {
 	 * @param string $lang
 	 * @return bool
 	 */
-	protected function keyExists( $key, $lang = 'en' ) {
+	protected function keyExists( string $key, string $lang = 'en' ) : bool {
 		return isset( $this->data[ $lang ][ $key ] );
 	}
 }
