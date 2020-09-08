@@ -292,7 +292,7 @@ if ( $itemData['type'] === 'text' ) {
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="assets/jquery.3.3.1.slim.min.js"></script>
+		<script src="assets/jquery.3.5.1.slim.min.js"></script>
 		<script src="assets/bootstrap.min.js"></script>
 		<script src="assets/MWStew.js"></script>
 		<!-- <script src="../../assets/js/vendor/popper.min.js"></script>
