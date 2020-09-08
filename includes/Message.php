@@ -23,13 +23,13 @@ class Message {
 	 * The translation data
 	 * @var array
 	 */
-	protected $data = array();
+	protected $data = [];
 
 	/**
 	 * An array of RTL languages
 	 * @var array
 	 */
-	protected $rtlLangs = array( 'he', 'ar', 'fa', 'ur', 'yi', 'ji' );
+	protected $rtlLangs = [ 'he', 'ar', 'fa', 'ur', 'yi', 'ji' ];
 
 	/**
 	 * Construct the message object according to the given language
@@ -40,7 +40,7 @@ class Message {
 	 * @param string $forceLangDir Forced language directionality.
 	 *  If given, it will override any default direction.
 	 */
-	public function __construct( $langCode = 'en', $forceLangDir = '' ) {
+	public function __construct( string $langCode = 'en', string $forceLangDir = '' ) {
 		$this->lang = $langCode ? $langCode : 'en';
 
 		// Get direction
@@ -58,7 +58,10 @@ class Message {
 		}
 	}
 
-	private function loadLangFile( $lang ) {
+	/**
+	 * @param string $lang Langage code
+	 */
+	private function loadLangFile( string $lang ) {
 		// Initialize
 		$this->data[ $lang ] = [];
 
@@ -85,7 +88,7 @@ class Message {
 	 *
 	 * @return string Direcitonality 'rtl' or 'ltr'
 	 */
-	public function getDir() {
+	public function getDir() : string {
 		return $this->dir;
 	}
 
@@ -93,45 +96,36 @@ class Message {
 	 * Output text (do not parse html)
 	 *
 	 * @param string $key Message key
-	 * @param Mixed... Parameters to replace in the message
+	 * @param Mixed $params,... Parameters to replace in the message
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function text( $key /* $param1, $param2, $param3 ... */) {
-		// Parse parameters
-		$params = func_get_args();
-		// First value is the $key, so get rid of it
-		array_shift( $params );
-
+	public function text( string $key, ...$params ) : string {
 		$msg = $this->parseKeyParams( $key, $params );
 		// Unparse html
 		return htmlspecialchars( $msg );
 	}
 
-
 	/**
 	 * Output html
 	 *
 	 * @param string $key Message key
-	 * @param Mixed... Parameters to replace in the message
+	 * @param Mixed $params,... Parameters to replace in the message
 	 * @return string Message in the language set up in the class, with
 	 *  all parameters replaced.
 	 */
-	public function html( $key /* $param1, $param2, $param3 ... */) {
-		// Parse parameters
-		$params = func_get_args();
-		// First value is the $key, so get rid of it
-		array_shift( $params );
-
+	public function html( string $key, ...$params ) : string {
 		return $this->parseKeyParams( $key, $params );
 	}
 
 	/**
 	 * Parse and replace
-	 * @param [type] $key [description]
-	 * @return [type] [description]
+	 *
+	 * @param string $key
+	 * @param array $params
+	 * @return string
 	 */
-	protected function parseKeyParams( $key, $params ) {
+	protected function parseKeyParams( string $key, array $params ) : string {
 		$msg = $this->getRawMessageByKey( $key, $this->lang );
 
 		if ( !$msg ) {
@@ -145,8 +139,14 @@ class Message {
 		return $msg;
 	}
 
-	protected function getRawMessageByKey( $key, $lang = 'en' ) {
-
+	/**
+	 * Parse and replace
+	 *
+	 * @param string $key
+	 * @param string $lang
+	 * @return string
+	 */
+	protected function getRawMessageByKey( string $key, string $lang = 'en' ) : string {
 		if ( !$this->keyExists( $key, $this->lang ) ) {
 			// Key doesn't exist, see if it exists in
 			// the fallback English
@@ -160,7 +160,14 @@ class Message {
 		}
 	}
 
-	protected function keyExists( $key, $lang = 'en' ) {
+	/**
+	 * Parse and replace
+	 *
+	 * @param string $key
+	 * @param string $lang
+	 * @return bool
+	 */
+	protected function keyExists( string $key, string $lang = 'en' ) : bool {
 		return isset( $this->data[ $lang ][ $key ] );
 	}
 }

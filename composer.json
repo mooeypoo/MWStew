@@ -13,7 +13,21 @@
 	"require": {
 		"mooeypoo/mwstew-builder": "^1.0"
 	},
-	"autoload": {
+    "require-dev": {
+        "php-parallel-lint/php-console-highlighter": "0.5",
+        "php-parallel-lint/php-parallel-lint": "1.2.0",
+        "mediawiki/mediawiki-codesniffer": "31.0.0"
+    },
+    "scripts": {
+        "test": [
+            "parallel-lint . --exclude vendor --exclude node_modules --exclude composer --exclude repositores --exclude wikis",
+            "phpcs -p -s"
+        ],
+        "fix": [
+            "phpcbf"
+        ]
+    },
+    "autoload": {
         "psr-4": { "MWStew\\UI\\": "includes/" }
     }
 }
